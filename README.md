@@ -1,2 +1,2 @@
 # MyGit
-https://rinatnuriev.github.io/MyGit/
+https://my-home-jungle.ru/

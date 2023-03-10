@@ -1,0 +1,858 @@
+body {
+  background: #EDE1DE;
+}
+
+.account_person__btn {
+  background: rgba(135, 149, 126, 0.3607843137);
+  stroke: #EDE1DE;
+}
+
+.container-account {
+  width: 1300px;
+  margin: 0 auto;
+  background: #87957E;
+}
+.container-account .account-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.container-account .account-wrapper .menu {
+  margin-top: 86px;
+  padding-left: 45px;
+  z-index: 1;
+}
+.container-account .account-wrapper .menu .account-avatar {
+  width: 177px;
+  height: 177px;
+  background: transparent;
+  border: 1px solid #3A4736;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container-account .account-wrapper .menu .acoount-name {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #3A4736;
+  margin-top: 32px;
+}
+.container-account .account-wrapper .menu .account-rate {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #3A4736;
+  margin-top: 7px;
+}
+.container-account .account-wrapper .menu .account-rate_icon {
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+}
+.container-account .account-wrapper .menu .account-rate_icon svg {
+  margin-right: 4px;
+}
+.container-account .account-wrapper .menu .account-rate_icon .account-rate_figure {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFFFFF;
+}
+.container-account .account-wrapper .menu .account-nav {
+  padding-top: 43px;
+}
+.container-account .account-wrapper .menu .account-nav .link {
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 21px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #3A4736;
+  border-radius: 4px 0px 0px 4px;
+}
+.container-account .account-wrapper .menu .account-nav .link:hover {
+  color: rgba(58, 71, 54, 0.6352941176);
+  background: #fff;
+  box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.25);
+}
+.container-account .account-wrapper .menu .account-nav .activeLink {
+  color: rgba(58, 71, 54, 0.6352941176);
+  background: #fff;
+  box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.25);
+}
+.container-account .account-wrapper .menu .account-active-link {
+  color: rgba(58, 71, 54, 0.6352941176);
+  background: #fff;
+  box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.25);
+}
+.container-account .info {
+  margin-top: 36px;
+  margin-bottom: 40px;
+  width: 1012px;
+  background: #fff;
+  box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 20px 0 0 20px;
+}
+
+.account-form {
+  width: 785px;
+  margin: 0 auto;
+}
+.account-form .check-label {
+  display: block;
+  margin-bottom: 13px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #3A4736;
+}
+.account-form .account-form_title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  color: #3A4736;
+  text-align: left;
+  padding-top: 31px;
+}
+.account-form .account-form_avatar {
+  padding-top: 60px;
+  padding-bottom: 37px;
+  display: flex;
+  align-items: center;
+}
+.account-form .account-form_avatar .form_avatar_img {
+  width: 135px;
+  height: 135px;
+  background: transparent;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.account-form .account-form_avatar .form_avatar_edit {
+  padding-left: 25px;
+  display: none;
+}
+.account-form .input__wrapper {
+  width: 100%;
+  position: relative;
+  margin: 15px 0;
+  text-align: center;
+}
+.account-form .input__wrapper .check-label {
+  text-align: left;
+  padding-left: 25px;
+}
+.account-form .input__wrapper .input__file {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+.account-form .input__wrapper .input__file-icon-wrapper {
+  height: 60px;
+  width: 60px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #fff;
+}
+.account-form .input__wrapper .input__file-button-text {
+  line-height: 1;
+  margin-top: 1px;
+}
+.account-form .input__wrapper .input__file-button {
+  width: 100%;
+  max-width: 230px;
+  height: 50px;
+  background: #87957e;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 25px;
+}
+.account-form .account-form_first-block {
+  display: flex;
+  justify-content: space-between;
+}
+.account-form .account-form_first-block #account-form_name, .account-form .account-form_first-block #account-form_surname, .account-form .account-form_first-block #account-form_date, .account-form .account-form_first-block #account-form_gender {
+  padding: 0px 0px 0px 35px;
+  width: 370px;
+  height: 40px;
+  border: 1px solid #3A4736;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  outline: none;
+}
+.account-form .account-form_first-block #account-form_date, .account-form .account-form_first-block #account-form_gender {
+  padding-left: 5px;
+}
+.account-form .account-form_first-block .name-input, .account-form .account-form_first-block .surname-div {
+  position: relative;
+}
+.account-form .account-form_first-block .name-input::before, .account-form .account-form_first-block .surname-div::before {
+  content: url("../img/logo/Person.svg");
+  position: absolute;
+  bottom: 15px;
+  left: 7px;
+}
+.account-form #account-form_nickname {
+  padding: 0px 0px 0px 35px;
+  width: 370px;
+  height: 40px;
+  border: 1px solid #3A4736;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  outline: none;
+}
+.account-form .nickname-div {
+  position: relative;
+}
+.account-form .nickname-div::before {
+  content: url("../img/logo/Person.svg");
+  position: absolute;
+  bottom: 15px;
+  left: 7px;
+}
+.account-form .account-form_second-block {
+  display: flex;
+  justify-content: space-between;
+}
+.account-form .account-form_second-block #account-form_country, .account-form .account-form_second-block #account-form_city, .account-form .account-form_second-block #account-form_mail, .account-form .account-form_second-block #account-form_phone {
+  padding: 0px 0px 0px 5px;
+  width: 370px;
+  height: 40px;
+  border: 1px solid #3A4736;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  outline: none;
+}
+.account-form .account-form_submit {
+  text-align: right;
+  margin-top: 20px;
+}
+.account-form .account-form_submit button {
+  margin-top: 0;
+  width: 231px;
+  height: 50px;
+  background: #87957E;
+  border: 1px solid #3A4736;
+  border-radius: 5px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 450ms ease-out;
+}
+.account-form .account-form_submit button:hover {
+  color: #87957E;
+}
+.account-form .account-form_submit button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+.account-form .account-form_submit button[class^=account-btn_submit]::after {
+  transition: all 450ms ease-out;
+}
+.account-form .account-form_submit button[class^=account-btn_submit]:hover::after {
+  transition: all 450ms ease-out;
+}
+.account-form .account-form_submit button.account-btn_submit::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+.account-form .account-form_submit button.account-btn_submit:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+.account-form .textarea-label {
+  position: absolute;
+  padding-top: 45px;
+}
+.account-form #account-form_textarea {
+  margin-top: 70px;
+  width: 100%;
+  height: 160px;
+  font-size: 16px;
+  outline: none;
+  padding: 7px;
+}
+
+.change-password_form {
+  width: 785px;
+  margin: 112px auto 0;
+}
+.change-password_form .check-label {
+  display: block;
+  margin-bottom: 13px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #3A4736;
+}
+.change-password_form .change-password_title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #3A4736;
+  margin-bottom: 31px;
+}
+.change-password_form input {
+  padding: 0px 0px 0px 8px;
+  width: 370px;
+  height: 40px;
+  border: 1px solid #3A4736;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  outline: none;
+}
+.change-password_form .change-password_submit {
+  padding-top: 20px;
+  text-align: right;
+}
+.change-password_form .change-password_submit button {
+  margin-top: 0;
+  width: 195px;
+  height: 50px;
+  background: #87957E;
+  border: 1px solid #3A4736;
+  border-radius: 5px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 450ms ease-out;
+}
+.change-password_form .change-password_submit button:hover {
+  color: #87957E;
+}
+.change-password_form .change-password_submit button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+.change-password_form .change-password_submit button[class^=change-pass_btn]::after {
+  transition: all 450ms ease-out;
+}
+.change-password_form .change-password_submit button[class^=change-pass_btn]:hover::after {
+  transition: all 450ms ease-out;
+}
+.change-password_form .change-password_submit button.change-pass_btn::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+.change-password_form .change-password_submit button.change-pass_btn:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.account-delete_btn {
+  width: 785px;
+  margin: 0 auto;
+  margin-top: 70px;
+  padding-bottom: 78px;
+  text-align: right;
+}
+.account-delete_btn button {
+  margin-top: 0;
+  width: 166px;
+  height: 50px;
+  background: #87957E;
+  border: 1px solid #3A4736;
+  border-radius: 5px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 450ms ease-out;
+}
+.account-delete_btn button:hover {
+  color: #87957E;
+}
+.account-delete_btn button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+.account-delete_btn button[class^=delete_btn]::after {
+  transition: all 450ms ease-out;
+}
+.account-delete_btn button[class^=delete_btn]:hover::after {
+  transition: all 450ms ease-out;
+}
+.account-delete_btn button.delete_btn::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+.account-delete_btn button.delete_btn:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.account-logout {
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+.account-logout button {
+  width: 170px;
+  height: 50px;
+  background: #87957E;
+  border: 1px solid #3A4736;
+  border-radius: 5px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 450ms ease-out;
+}
+.account-logout button:hover {
+  color: #87957E;
+}
+.account-logout button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+.account-logout button[class^=logout_btn]::after {
+  transition: all 450ms ease-out;
+}
+.account-logout button[class^=logout_btn]:hover::after {
+  transition: all 450ms ease-out;
+}
+.account-logout button.logout_btn::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+.account-logout button.logout_btn:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.main-page__footer {
+  min-width: 199px;
+  background: #525D4D;
+  border-top: 1px solid #3A4736;
+}
+.main-page__footer .footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-right: 15px;
+}
+.main-page__footer .footer__container .footer__logo {
+  margin-right: 18px;
+  padding-top: 10px;
+}
+.main-page__footer .footer__container .footer__nav {
+  display: flex;
+}
+.main-page__footer .footer__container .footer__nav ul:nth-child(1) {
+  margin-right: 90px;
+}
+.main-page__footer .footer__container .footer__nav ul:nth-child(2) {
+  margin-right: 90px;
+}
+.main-page__footer .footer__container .footer__nav ul:nth-child(3) {
+  margin-right: 30px;
+}
+.main-page__footer .footer__container .footer__nav a {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EDE1DE;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: 0.3s;
+  text-underline-offset: 3px;
+  letter-spacing: 0.01em;
+}
+.main-page__footer .footer__container .footer__nav a:hover {
+  text-decoration-color: rgba(237, 225, 222, 0.537254902);
+  text-underline-offset: 3px;
+}
+.main-page__footer .footer__container .footer__nav .nal_li_first, .main-page__footer .footer__container .footer__nav .nal_li_second {
+  margin-bottom: 20px;
+}
+.main-page__footer .footer__container .footer__btn > svg {
+  transition: transform 0.4s;
+}
+.main-page__footer .footer__container .footer__btn > svg:hover {
+  cursor: pointer;
+  transform: scale(0.8);
+}
+.main-page__footer .footer__container .footer__btn > svg:nth-child(1) {
+  margin-right: 20px;
+}
+.main-page__footer .footer__container .footer__btn > svg:nth-child(2) {
+  margin-right: 20px;
+}
+.main-page__footer .footer__container .footer__btn > svg:nth-child(3) {
+  margin-right: 20px;
+}
+.main-page__footer .footer__container .phone-logo {
+  display: none;
+}
+
+.account-save_wrapper {
+  width: 900px;
+  margin: 0 auto;
+}
+.account-save_wrapper .account-save_title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  color: #3A4736;
+  margin-top: 31px;
+  margin-bottom: 47px;
+}
+.account-save_wrapper .account-nav_save {
+  margin-bottom: 90px;
+}
+.account-save_wrapper .account-nav_save .account-save_button {
+  width: 170px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 1px solid #87957E;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 20px;
+  color: #87957E;
+}
+.account-save_wrapper .account-nav_save .account-save_button:hover {
+  color: #3A4736;
+  border: 1px solid #3A4736;
+}
+.account-save_wrapper .account-nav_save .activeButton {
+  color: #3A4736;
+  border: 1px solid #3A4736;
+}
+.account-save_wrapper .info2 {
+  padding: 0;
+}
+
+.account-save_plants-wrapper .account-save_plants-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px 30px;
+  padding-bottom: 30px;
+}
+.account-save_plants-wrapper .account-save_plants-cards .account-save_plants-card {
+  height: 390px;
+  width: 280px;
+  box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.account-save_plants-wrapper .account-save_plants-cards .account-save_plants-card:hover {
+  transform: scale(1.01);
+}
+.account-save_plants-wrapper .account-save_plants-cards .account-save_plants-card .account-save_plants-imgDiv {
+  height: 300px;
+}
+.account-save_plants-wrapper .account-save_plants-cards .account-save_plants-card .account-save_plants-imgDiv .account-save_plants-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 280px;
+  height: 300px;
+  border-radius: 6px 6px 0px 0px;
+}
+.account-save_plants-wrapper .account-save_plants-cards .account-save_plants-card .account-save_plants-caption {
+  height: 90px;
+  background: #FDFDFD;
+  border-radius: 0px 0px 6px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.account-save_plants-wrapper .account-save_plants-cards .account-save_plants-card .account-save_plants-caption .account-save_plants-captionText {
+  display: block;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.account-save_articles-wrapper .account-save_articles-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card {
+  width: 383px;
+  height: 490px;
+  margin-bottom: 70px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card:hover {
+  transform: scale(1.01);
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card .account-save_articles-imgDiv {
+  height: 400px;
+  margin-bottom: 9px;
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card .account-save_articles-imgDiv .account-save_articles-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 400px;
+  width: 383px;
+  border-radius: 6px 6px 0px 0px;
+  box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.25);
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card .account-save_articles-caption {
+  height: 90px;
+  background: transparent;
+  border-radius: 0px 0px 6px 6px;
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card .account-save_articles-caption .account-save_articles-captionText {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  color: #3A4736;
+  display: block;
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card .account-save_articles-caption .account-save_articles-captionNote {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card:nth-child(2n) {
+  height: 428px;
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card:nth-child(2n) .account-save_articles-imgDiv {
+  height: 338px;
+}
+.account-save_articles-wrapper .account-save_articles-cards .account-save_articles-card:nth-child(2n) .account-save_articles-imgDiv .account-save_articles-img {
+  height: 338px;
+}
+
+.account-save_interior-wrapper {
+  margin-top: 100px;
+}
+.account-save_interior-wrapper .account-save_interior-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.account-save_interior-wrapper .account-save_interior-cards .account-save_interior-card {
+  width: 383px;
+  height: 350px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.account-save_interior-wrapper .account-save_interior-cards .account-save_interior-card:hover {
+  transform: scale(1.01);
+}
+.account-save_interior-wrapper .account-save_interior-cards .account-save_interior-card .account-save_interior-imgDiv {
+  height: 350px;
+}
+.account-save_interior-wrapper .account-save_interior-cards .account-save_interior-card .account-save_interior-imgDiv .account-save_interior-img {
+  height: 350px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 6px;
+}
+.account-save_interior-wrapper .account-save_interior-cards .account-save_interior-card:nth-child(2) {
+  height: 500px;
+}
+.account-save_interior-wrapper .account-save_interior-cards .account-save_interior-card:nth-child(2) .account-save_interior-imgDiv .account-save_interior-img {
+  height: 500px;
+}
+.account-save_interior-wrapper .account-save_interior-cards .account-save_interior-card:nth-child(2n+1) {
+  margin-top: -120px;
+}
+.account-save_interior-wrapper .account-save_interior-cards .account-save_interior-card:nth-child(1) {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.account-save_community-wrapper .account-save_community-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card {
+  width: 384px;
+  height: 515px;
+  background: #FDFDFD;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  margin-bottom: 60px;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card .account-save_community-imgDiv {
+  height: 303px;
+  border-radius: 6px 6px 0 0;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card .account-save_community-imgDiv .account-save_community-img {
+  height: 303px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 6px 6px 0 0;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card .community-card_caption {
+  text-align: center;
+  width: 287px;
+  margin: 0 auto;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card .community-card_caption .community-card_caption-type {
+  margin-top: 21px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  font-variant: all-small-caps;
+  color: #E09A78;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card .community-card_caption .community-card_captio-title {
+  margin-top: 13px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #525D4D;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card .community-card_caption .community-card_line {
+  width: 149px;
+  height: 0;
+  border: 0.5px solid #3A4736;
+  margin: 19px auto 0;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card .community-card_caption .community-card_read-more {
+  margin-top: 22px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  font-variant: all-small-caps;
+  color: #525D4D;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card:nth-child(2n) {
+  height: 463px;
+  margin-top: -60px;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card:nth-child(2n) .account-save_community-imgDiv {
+  height: 257px;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card:nth-child(2n) .account-save_community-imgDiv .account-save_community-img {
+  height: 257px;
+}
+.account-save_community-wrapper .account-save_community-cards .account-save_community-card:nth-child(2) {
+  margin-top: 0;
+}
+
+.account-notready_div {
+  width: 600px;
+  height: 600px;
+  margin: 70px auto;
+}
+.account-notready_div .account-notready {
+  width: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=account.style.css.map */

@@ -1,0 +1,514 @@
+@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/Raleway/static/Raleway-Regular.ttf");
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
+
+body {
+  font-family: "Raleway";
+  font-style: normal;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #87957E;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+
+@keyframes flash {
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  0% {
+    opacity: 0;
+  }
+}
+
+.auth {
+  width: 390px;
+  max-height: 680px;
+  margin: 0 auto;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1500;
+  display: none;
+  background: #EEE4E2;
+}
+
+#filter_2 {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1000;
+  display: none;
+}
+
+.auth__wrapper {
+  width: 370px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.auth__wrapper .auth__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  stroke: #3A4736;
+}
+
+.auth__wrapper .auth__close:hover {
+  stroke: rgba(58, 71, 54, 0.4588235294);
+  cursor: pointer;
+}
+
+.auth__wrapper .auth__title-main {
+  text-align: center;
+  padding-top: 20px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.auth__wrapper .auth__title-main span {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  color: #3A4736;
+  padding-top: 11px;
+}
+
+.auth__form .form__mail .mail__label {
+  margin-top: 19px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  display: block;
+  color: #3A4736;
+}
+
+.auth__form .form__mail #mail__input {
+  margin-top: 8px;
+  padding: 0px 4px 0px 9px;
+  width: 370px;
+  height: 40px;
+  border: 1px solid #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.auth__form .form__mail #mail__input::-moz-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.auth__form .form__mail #mail__input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.auth__form .form__mail .mail_error {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #FF0000;
+  opacity: 0;
+  position: absolute;
+}
+
+.auth__form .form__mail svg {
+  position: absolute;
+  right: 11.5px;
+  top: 136px;
+  stroke: #3A4736;
+}
+
+.auth__form .form__mail svg:hover {
+  stroke: rgba(58, 71, 54, 0.4588235294);
+  cursor: pointer;
+}
+
+.auth__form .form__password {
+  position: relative;
+  margin-top: 20px;
+}
+
+.auth__form .form__password .password__label {
+  margin-top: 24px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  display: block;
+  color: #3A4736;
+}
+
+.auth__form .form__password #password__input {
+  margin-top: 8px;
+  padding: 0px 4px 0px 9px;
+  width: 370px;
+  height: 40px;
+  border: 1px solid #3A4736;
+  border-radius: 4px;
+}
+
+.auth__form .form__password #password__input::-moz-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.auth__form .form__password #password__input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.auth__form .form__password .password_error {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #FF0000;
+  opacity: 0;
+  position: absolute;
+}
+
+.auth__form .form__password svg {
+  position: absolute;
+  left: 344px;
+  top: 40px;
+  fill: #3A4736;
+}
+
+.auth__form .form__password svg:hover {
+  fill: rgba(58, 71, 54, 0.6745098039);
+  cursor: pointer;
+}
+
+.auth__form .remember {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.auth__form .remember .remember__stay {
+  display: flex;
+  align-items: center;
+}
+
+.auth__form .remember .remember__stay p {
+  margin-top: 1px;
+}
+
+.auth__form .remember .remember__stay input {
+  margin-right: 5px;
+}
+
+.auth__form .remember .remind a {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.auth__form .submit-btn button {
+  margin-top: 25px;
+  width: 370px;
+  height: 40px;
+  background: #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 450ms ease-out;
+}
+
+.auth__form .submit-btn button:hover {
+  color: #3A4736;
+}
+
+.auth__form .submit-btn button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+
+.auth__form .submit-btn button[class^=form__btn]::after {
+  transition: all 450ms ease-out;
+}
+
+.auth__form .submit-btn button[class^=form__btn]:hover::after {
+  transition: all 450ms ease-out;
+}
+
+.auth__form .submit-btn button.form__btn::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+
+.auth__form .submit-btn button.form__btn:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.auth__form .form__text-between {
+  text-align: center;
+  margin-top: 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  color: #3A4736;
+}
+/* //////// */
+
+/* .auth__form .auth_btn-vk {
+  width: 370px;
+  height: 40px;
+  background: #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EEE4E2;
+  margin-top: 20px;
+  position: relative;
+} */
+
+.auth__form .auth_btn-vk img {
+  position: absolute;
+  left: 30px;
+  bottom: 5px;
+  height: 30px;
+  width: 30px;
+}
+
+.auth__form .vk-btn button {
+  margin-top: 20px;
+  width: 370px;
+  height: 40px;
+  background: #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 450ms ease-out;
+}
+
+.auth__form .vk-btn button:hover {
+  color: #3A4736;
+}
+
+.auth__form .vk-btn button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+
+.auth__form .vk-btn button[class^=auth_btn-vk]::after {
+  transition: all 450ms ease-out;
+}
+
+.auth__form .vk-btn button[class^=auth_btn-vk]:hover::after {
+  transition: all 450ms ease-out;
+}
+
+.auth__form .vk-btn button.auth_btn-vk::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+
+.auth__form .vk-btn button.auth_btn-vk:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+/* ///////// */
+.auth__form .auth_btn-gmail img {
+  position: absolute;
+  left: 30px;
+  bottom: 5px;
+  height: 30px;
+  width: 30px;
+}
+.auth__form .gmail-btn button {
+  margin-top: 25px;
+  width: 370px;
+  height: 40px;
+  background: #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 450ms ease-out;
+}
+
+.auth__form .gmail-btn button:hover {
+  color: #3A4736;
+}
+
+.auth__form .gmail-btn button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+
+.auth__form .gmail-btn button[class^=auth_btn-gmail]::after {
+  transition: all 450ms ease-out;
+}
+
+.auth__form .gmail-btn button[class^=auth_btn-gmail]:hover::after {
+  transition: all 450ms ease-out;
+}
+
+.auth__form .gmail-btn button.auth_btn-gmail::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+
+.auth__form .gmail-btn button.auth_btn-gmail:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+/* //////////// */
+
+.auth__form .form__text-privacy {
+  margin-top: 30px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #3A4736;
+}
+
+.auth__form .form__text-privacy strong {
+  font-weight: 600;
+}
+
+.auth__form .form__text-auth {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.auth__form .form__text-auth .auth-form__goReg {
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+  display: block;
+  padding-bottom: 15px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: 0.5s;
+}
+
+.auth__form .form__text-auth .auth-form__goReg:hover {
+  text-decoration-color: #3A4736;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=auth.css.map */

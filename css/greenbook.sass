@@ -1,0 +1,680 @@
+body
+    background-color: #EDE1DE
+.plants-species__input-phone, .plants-type__input-phone
+    display: none
+.background-between
+    transition: opacity 1s
+    opacity: 0
+    height: 350px
+    width: 100%
+    background: #87957E
+    border: 1px solid #3A4736
+    border-radius: 6px
+    display: flex
+    align-items: center
+    justify-content: center
+    position: absolute
+    top: 1100px
+    left: 0
+    z-index: -1
+    .background-between_container
+        max-width: 1210px
+        margin: 0 auto
+        .background-between__text
+            font-weight: 800
+            font-size: 40px
+            letter-spacing: 1.1em
+            line-height: 28px
+            color: #EEE4E2
+            text-align: center
+            display: block
+    @media screen and (max-width: 1210px)
+        .background-between
+            top: 1628px
+
+.filter
+    background-color: #87957E
+    height: 200px
+    .filter__title
+        padding-top: 30px
+        padding-bottom: 32px
+        color: #EEE4E2
+    .filter-wrapper
+        display: flex
+        justify-content: space-between
+        .sort-by-rating
+            width: 280px
+            height: 40px
+            background: #FFFFFF
+            border: 1px solid #3A4736
+            border-radius: 4px
+            display: flex
+            align-items: center
+            cursor: pointer
+            p
+                display: block
+                font-weight: 400
+                font-size: 19px
+                line-height: 20px
+                color: #3A4736
+                padding-left: 10px
+        .select-by-sort
+            background: #EEE4E2
+
+        .sort-by-alphabet
+            width: 280px
+            height: 40px
+            background: #FFFFFF
+            border: 1px solid #3A4736
+            border-radius: 4px
+            display: flex
+            align-items: center
+            cursor: pointer
+            p
+                display: block
+                font-weight: 400
+                font-size: 19px
+                line-height: 20px
+                color: #3A4736
+                padding-left: 10px
+                .select-by-alphabet
+                    background-color: #EEE4E2
+        .select-by-sort
+            background: #EEE4E2
+
+.select
+    position: relative
+    display: block
+    z-index: 1
+    .select-head
+        width: 280px
+        height: 40px
+        border: 1px solid #666666
+        border-radius: 4px
+        padding: 8px
+        font-size: 19px
+        color: #3A4736
+        background-color: #fff
+        cursor: pointer
+        svg
+            position: absolute
+            transform: translateY(50%)
+            transition: 0.2s ease-in
+            right: 10px
+            bottom: 18px
+            &:hover
+                transform: translateY(50%) rotate(180deg)
+    .select-list
+        position: absolute
+        width: 100%
+        top: 120%
+        left: 0
+        right: 0
+        border-radius: 6px
+        z-index: 10
+        font-size: 20px
+        line-height: 20px
+        color: #3A4736
+        background-color: #fff
+        transition: 0.5s ease-in-out
+        transform: scaleY(0)
+        transform-origin: 0 0
+    .select-item
+        position: relative
+        padding: 8px
+        cursor: pointer
+        list-style-type: none
+    .select-item:first-child
+        border-radius: 6px 6px 0 0
+    .select-item:last-child
+        border-radius: 0 0 6px 6px
+    .select-item:hover
+        background-color: #EEE4E2
+    &:hover &-list
+        transform: scaleY(1)
+    &:hover &-head::after
+        transform: translateY(50%) rotate(180deg)
+
+@media screen and (max-width: 600px)
+    .greenbook-recently
+        display: none
+    .plants-species__input-phone, .plants-type__input-phone
+        display: block
+    .plants-species__input, .plants-type__input
+        display: none
+    .filter
+        padding-top: 19px
+        background-color: initial
+        height: initial
+        .filter__title
+            display: none
+        .filter-wrapper
+            justify-content: left
+            max-width: 340px
+            flex-wrap: wrap
+            padding-bottom: 20px
+            .sort-by-rating
+                width: 130px
+                height: 24px
+                background: initial
+                border: none
+                margin-top: 20px
+
+                p
+                    font-family: 'Raleway'
+                    font-style: normal
+                    font-weight: 500
+                    font-size: 12px
+                    line-height: 12px
+                    padding-left: 0
+                    color: #87957E
+                .sort-select
+                    color: #3A4736
+                    border-bottom: 0.3px solid #3A4736
+
+            .sort-by-alphabet
+                width: 130px
+                height: 24px
+                background: initial
+                border: none
+                margin-top: 20px
+                p
+                    font-family: 'Raleway'
+                    font-style: normal
+                    font-weight: 500
+                    font-size: 12px
+                    line-height: 12px
+                    padding-left: 0
+                    color: #87957E
+                .sort-select
+                    color: #3A4736
+                    border-bottom: 0.3px solid #3A4736
+            .select
+                .select-head
+                    height: 24px
+                    width: 170px
+                    background-color: #EDE1DE
+                    background: #EDE1DE
+                    font-family: 'Raleway'
+                    font-style: normal
+                    font-weight: 500
+                    font-size: 14px
+                    line-height: 18px
+                    padding: 0
+                    border: none
+
+                    .plants-species_svg
+                        bottom: 14px
+                        right: 53px
+                    .plants-type_svg
+                        bottom: 14px
+                        right: 70px
+                .select-list
+                    font-family: 'Raleway'
+                    font-style: normal
+                    font-weight: 500
+                    font-size: 12px
+                    line-height: 12px
+                    background-color: #EDE1DE
+                    background: #EDE1DE
+                .select-item
+                    font-size: 16px
+                    padding: 13px 
+                .select-item-select
+                    background: white
+
+.greenbook-gallery
+    min-height: 1100px
+    max-width: 1300px
+    margin: -30px auto
+    padding-top: 10px
+    position: relative
+    opacity: 1
+    transition: all 1s ease
+    .greenbook-cards_first
+        display: flex
+        flex-flow: row wrap
+        .greenbook-card
+            border-radius: 6px 6px 6px 6px
+            filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.25))
+            position: relative
+            height: 440px
+            width: 280px
+            cursor: pointer
+            transition: .3s
+            &:hover
+                transform: scale(1.04)
+            .greenbook-card__img-div
+                height: 350px
+            .greenbook-card__img
+                height: 100%
+                width: 100%
+                object-fit: cover
+            .greenbook-card__like
+                position: absolute
+                top: 4px
+                right: 4px
+                width: 44px
+                height: 41px
+                background: rgba(217, 217, 217, 0.6)
+                border-radius: 6px
+                display: flex
+                align-items: center
+                justify-content: center
+                cursor: pointer
+                svg
+                    stroke: #3A4736
+                    transition: all 0.4s
+                    &:hover
+                        stroke: #DD4646
+            .greenbook-card__caption
+                height: 90px
+                width: 280px
+                font-weight: 400
+                font-size: 20px
+                line-height: 20px
+                color: #3A4736
+                display: flex
+                align-items: center
+                justify-content: center
+                text-align: center
+                background: #FDFDFD
+                p
+                    display: block
+
+        .greenbook-card:nth-child(1),
+        .greenbook-card:nth-child(3)
+            height: 390px
+            width: 280px
+            .greenbook-card__img-div
+                height: 300px
+            .greenbook-card__img
+                height: 100%
+                width: 100%
+                object-fit: cover
+
+        .greenbook-card:nth-child(2n-1)
+            overflow: hidden
+            margin-right: 30px
+
+        .greenbook-card:nth-child(2n)
+            overflow: hidden
+            margin-bottom: 50px
+            margin-right: 30px
+
+        .greenbook-card:nth-child(4n)
+            margin-right: initial
+        .greenbook-card:nth-child(5n)
+            margin-top: -50px
+        .greenbook-card:nth-child(7n)
+            margin-top: -50px
+
+    .greenbook-cards_second
+        display: flex
+        flex-flow: row wrap
+        z-index: 22
+        margin-top: 130px
+        padding-bottom: 100px
+        .greenbook-card
+            border-radius: 6px 6px 6px 6px
+            filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.25))
+            position: relative
+            height: 440px
+            width: 280px
+            cursor: pointer
+            transition: .3s
+            &:hover
+                transform: scale(1.04)
+            .greenbook-card__img-div
+                height: 350px
+            .greenbook-card__img
+                height: 100%
+                width: 100%
+                object-fit: cover
+            .greenbook-card__like
+                position: absolute
+                top: 4px
+                right: 4px
+                width: 44px
+                height: 41px
+                background: rgba(217, 217, 217, 0.6)
+                border-radius: 6px
+                display: flex
+                align-items: center
+                justify-content: center
+                cursor: pointer
+                svg
+                    stroke: #3A4736
+                    transition: all 0.4s
+                    &:hover
+                        stroke: #DD4646
+            .greenbook-card__caption
+                height: 90px
+                width: 280px
+                font-weight: 400
+                font-size: 20px
+                line-height: 20px
+                color: #3A4736
+                display: flex
+                align-items: center
+                justify-content: center
+                text-align: center
+                background: #FDFDFD
+                p
+                    display: block
+        .greenbook-card:nth-child(2n-1)
+            overflow: hidden
+            margin-right: 30px
+
+        .greenbook-card:nth-child(2n)
+            overflow: hidden
+            margin-right: 30px
+            margin-top: 50px
+        .greenbook-card:nth-child(4n)
+            margin-right: initial
+        .greenbook-card:nth-child(6),
+        .greenbook-card:nth-child(8)
+            height: 390px
+            width: 280px
+            .greenbook-card__img-div
+                height: 300px
+            .greenbook-card__img
+                height: 100%
+                width: 100%
+                object-fit: cover
+
+@media screen and (max-width: 600px)
+    .loadMore
+        margin-bottom: 50px
+    .background-between
+        display: none
+        top: 800px
+        height: 200px
+        .background-between_container
+            display: none
+            .background-between__text
+                display: none
+    .greenbook-gallery
+        min-height: 100vh
+        opacity: 1
+        max-width: initial
+        margin: initial
+        .container
+            padding-left: 15px
+            padding-right: 15px
+        .greenbook-cards_first
+            display: grid
+            grid-template-columns: 1fr 1fr
+            justify-content: space-between
+            flex-flow: wrap
+            margin-bottom: 50px
+            gap: 20px
+            .greenbook-card
+                width: initial
+                height: 219px
+                .greenbook-card__img-div
+                    height: 180px
+                .greenbook-card__caption
+                    background: transparent
+                    font-family: 'Raleway'
+                    font-style: normal
+                    font-weight: 500
+                    font-size: 12px
+                    line-height: 12px
+                    font-variant: small-caps
+                    color: #3A4736
+                    display: initial
+                    align-items: initial
+                    justify-content: initial
+                    p
+                        margin-top: 13px
+            .greenbook-card:nth-child(1),
+            .greenbook-card:nth-child(3)
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+                .greenbook-card__img
+                    height: 100%
+                    width: 100%
+                    object-fit: cover
+
+            .greenbook-card:nth-child(2n-1)
+                overflow: initial
+                margin-right: initial
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+
+            .greenbook-card:nth-child(2n)
+                overflow: initial
+                margin-bottom: initial
+                margin-right: initial
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+
+            .greenbook-card:nth-child(4n)
+                margin-right: initial
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+            .greenbook-card:nth-child(5n)
+                margin-top: initial
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+
+            .greenbook-card:nth-child(7n)
+                margin-top: initial
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+
+        .greenbook-cards_second
+            justify-content: space-between
+            flex-flow: wrap
+            margin-top: initial
+            padding-bottom: initial
+            margin-bottom: 50px
+            display: grid
+            grid-template-columns: 1fr 1fr
+            gap: 20px
+            .greenbook-card
+                width: initial
+                height: 219px
+                .greenbook-card__img-div
+                    height: 180px
+                .greenbook-card__caption
+                    background: transparent
+                    font-family: 'Raleway'
+                    font-style: normal
+                    font-weight: 500
+                    font-size: 12px
+                    line-height: 12px
+                    font-variant: small-caps
+                    color: #3A4736
+                    display: initial
+                    align-items: initial
+                    justify-content: initial
+                    p
+                        margin-top: 13px
+            .greenbook-card:nth-child(2n-1)
+                overflow: initial
+                margin-right: initial
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+
+            .greenbook-card:nth-child(2n)
+                overflow: initial
+                margin-right: initial
+                margin-top: initial
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+            .greenbook-card:nth-child(4n)
+                margin-right: initial
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+
+            .greenbook-card:nth-child(6),
+            .greenbook-card:nth-child(8)
+                width: initial
+                height: 219px
+                margin-bottom: 30px
+                .greenbook-card__img-div
+                    height: 180px
+                    .greenbook-card__img
+                        height: 100%
+                        width: 100%
+                        object-fit: cover
+
+.loadMore
+    display: flex
+    justify-content: center
+    button
+        width: 250px
+        height: 50px
+        background: #87957E
+        border: 1px solid #3A4736
+        border-radius: 6px
+        margin-top: 49px
+        font-weight: 400
+        font-size: 20px
+        line-height: 20px
+        color: #EEE4E2
+        cursor: pointer
+        position: relative
+        z-index: 1
+        overflow: hidden
+        transition: all 450ms ease-out
+    button:hover
+        color: #87957E
+    button::after
+        content: ""
+        background: #EEE4E2
+        position: absolute
+        z-index: -1
+        padding: 0.85em 0.75em
+        display: block
+    button[class^="loadMore"]::after
+        transition: all 450ms ease-out
+    button[class^="loadMore"]:hover::after
+        transition: all 450ms ease-out
+    button.loadMore_btn::after
+        border-radius: 50%
+        left: -30%
+        right: -30%
+        top: -150%
+        bottom: -150%
+        line-height: 8.34em
+        transform: scale(0, 0.4)
+        opacity: 0.5
+    button.loadMore_btn:hover::after
+        transform: scale(1, 1)
+        opacity: 1
+
+.greenbook-recently
+    margin-top: 174px
+    min-width: 320px
+    position: relative
+    padding-bottom: 60px
+    .greenbook-slider__title
+        // padding-bottom: 50px
+    .swiper
+        padding-right: 2px
+        padding-left: 2px
+    .swiper-wrapper__greenbook
+        padding-top: 50px
+        padding-bottom: 140px
+    .swiper-slide
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25)
+        border: 1px solid #87957E
+        border-radius: 6px
+        transition: .3s
+        height: 404px
+        overflow: hidden
+        display: inline-block
+        position: relative
+        cursor: pointer
+        &:hover
+            transform-origin: right
+            transform: scale(1.04)
+        .greenbook-slider-like
+            width: 43px
+            height: 41px
+            background: rgba(217, 217, 217, 0.6)
+            border-radius: 6px
+            display: flex
+            align-items: center
+            justify-content: center
+            position: absolute
+            top: 11px
+            right: 12px
+        .greenbook-slider-like > svg
+            stroke: #3A4736
+            transition: all 0.4s
+            &:hover
+                stroke: #DD4646
+
+    .swiper-slide-active:hover
+        transform-origin: 0% 50%
+        transform: scale(1.04)
+
+    .swiper-slide-next:hover
+        transform-origin: 0% 50%
+        transform: scale(1.04)
+    .greenbook-slider-title_div
+        display: flex
+        justify-content: center
+        height: 104px
+        .greenbook-slider-title
+            max-width: 240px
+            font-weight: 400
+            max-height: 60px
+            font-size: 16px
+            line-height: 20px
+            color: #3A4736
+            text-align: center
+            -webkit-line-clamp: 3
+            display: -webkit-box
+            -webkit-box-orient: vertical
+            overflow: hidden
+    .swiper-slide img
+        height: 300px
+        width: 100%
+        object-fit: cover
+        border-radius: 6px 6px 0px 0px
+        margin-bottom: 20px
+        border-bottom: 1px solid #87957E
+    .greenbook-slider__background
+        width: 100%
+        min-height: 120px
+        background: #87957E
+        border: 1px solid #3A4736
+        border-radius: 6px
+        position: absolute
+        top: 200px
+    .hr
+        border: 1px solid #3A4736
+        width: 500px
+        margin: 0 auto

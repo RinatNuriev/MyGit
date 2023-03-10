@@ -1,0 +1,501 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
+
+body {
+  font-family: "Raleway";
+  font-style: normal;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #87957E;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+
+@keyframes flash {
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  0% {
+    opacity: 0;
+  }
+}
+
+.reg {
+  width: 390px;
+  max-height: 680px;
+  margin: 0 auto;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1500;
+  display: none;
+  background: #EEE4E2;
+}
+
+#filter {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1001;
+  display: none;
+}
+
+.reg__wrapper {
+  width: 370px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.reg__wrapper .reg__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  stroke: #3A4736;
+}
+
+.reg__wrapper .reg__close:hover {
+  stroke: rgba(58, 71, 54, 0.4588235294);
+  cursor: pointer;
+}
+
+.reg__wrapper .reg__title {
+  text-align: center;
+  /* padding-top: 20px; */
+}
+
+.reg__wrapper .reg__title-main {
+  text-align: center;
+  padding-top: 20px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.reg__wrapper .reg__title-main span {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  color: #3A4736;
+  padding-top: 11px;
+}
+
+.reg__wrapper .reg__title-tagline {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #000000;
+  padding-top: 20px;
+}
+
+.reg__form .form__mail .mail__label {
+  margin-top: 19px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  display: block;
+  color: #3A4736;
+}
+
+.reg__form .form__mail #mail__input {
+  margin-top: 8px;
+  padding: 0px 4px 0px 9px;
+  width: 370px;
+  height: 40px;
+  border: 1px solid #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.reg__form .form__mail #mail__input::-moz-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.reg__form .form__mail #mail__input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.reg__form .form__mail .mail_error {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #FF0000;
+  opacity: 0;
+  position: absolute;
+}
+
+.reg__form .form__mail svg {
+  position: absolute;
+  right: 13px;
+  top: 176px;
+  stroke: #3A4736;
+}
+
+.reg__form .form__mail svg:hover {
+  stroke: rgba(58, 71, 54, 0.4588235294);
+  cursor: pointer;
+}
+
+.reg__form .form__password {
+  position: relative;
+  margin-top: 20px;
+}
+
+.reg__form .form__password .password__label {
+  margin-top: 24px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  display: block;
+  color: #3A4736;
+}
+
+.reg__form .form__password #password__input {
+  margin-top: 8px;
+  padding: 0px 4px 0px 9px;
+  width: 370px;
+  height: 40px;
+  border: 1px solid #3A4736;
+  border-radius: 4px;
+}
+
+.reg__form .form__password #password__input::-moz-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.reg__form .form__password #password__input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+.reg__form .form__password .password_error {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #FF0000;
+  opacity: 0;
+  position: absolute;
+}
+
+.reg__form .form__password svg {
+  position: absolute;
+  left: 343px;
+  top: 40px;
+  fill: #3A4736;
+}
+
+.reg__form .form__password svg:hover {
+  fill: rgba(58, 71, 54, 0.6745098039);
+  cursor: pointer;
+}
+
+.reg__form .submit-btn button {
+  margin-top: 25px;
+  width: 370px;
+  height: 40px;
+  background: #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+}
+
+.reg__form .submit-btn button:hover {
+  color: #3A4736;
+}
+
+.reg__form .submit-btn button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+
+.reg__form .submit-btn button[class^=form__btn]::after {
+  transition: all 0.6s ease-out;
+}
+
+.reg__form .submit-btn button[class^=form__btn]:hover::after {
+  transition: all 0.6s ease-out;
+}
+
+.reg__form .submit-btn button.form__btn::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+
+.reg__form .submit-btn button.form__btn:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.reg__form .form__text-between {
+  text-align: center;
+  margin-top: 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  color: #3A4736;
+}
+
+/* .reg__form .reg_btn-vk {
+  width: 370px;
+  height: 40px;
+  background: #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EEE4E2;
+  margin-top: 20px;
+  position: relative;
+} */
+
+.reg__form .reg_btn-vk img {
+  position: absolute;
+  left: 30px;
+  bottom: 5px;
+  height: 30px;
+  width: 30px;
+}
+
+.reg__form .vk-btn button {
+  margin-top: 20px;
+  width: 370px;
+  height: 40px;
+  background: #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 450ms ease-out;
+}
+
+.reg__form .vk-btn button:hover {
+  color: #3A4736;
+}
+
+.reg__form.reg__form .vk-btn button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+
+.reg__form .vk-btn button[class^=reg_btn-vk]::after {
+  transition: all 450ms ease-out;
+}
+
+.reg__form .vk-btn button[class^=reg_btn-vk]:hover::after {
+  transition: all 450ms ease-out;
+}
+
+.reg__form .vk-btn button.reg_btn-vk::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+
+.reg__form .vk-btn button.reg_btn-vk:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+/* .reg__form .reg_btn-gmail {
+  width: 370px;
+  height: 40px;
+  background: #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EEE4E2;
+  margin-top: 20px;
+  position: relative;
+} */
+.reg__form .gmail-btn button {
+  margin-top: 25px;
+  width: 370px;
+  height: 40px;
+  background: #3A4736;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EEE4E2;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 450ms ease-out;
+}
+
+.reg__form .gmail-btn button:hover {
+  color: #3A4736;
+}
+
+.reg__form .gmail-btn button::after {
+  content: "";
+  background: #EEE4E2;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
+}
+
+.reg__form .gmail-btn button[class^=reg_btn-gmail]::after {
+  transition: all 450ms ease-out;
+}
+
+.reg__form .gmail-btn button[class^=reg_btn-gmail]:hover::after {
+  transition: all 450ms ease-out;
+}
+
+.reg__form .gmail-btn button.reg_btn-gmail::after {
+  border-radius: 50%;
+  left: -30%;
+  right: -30%;
+  top: -150%;
+  bottom: -150%;
+  line-height: 8.34em;
+  transform: scale(0, 0.4);
+  opacity: 0.5;
+}
+
+.reg__form .gmail-btn button.reg_btn-gmail:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+/* /////// */
+.reg__form .reg_btn-gmail img {
+  position: absolute;
+  left: 30px;
+  bottom: 5px;
+  height: 30px;
+  width: 30px;
+}
+
+.reg__form .form__text-privacy {
+  margin-top: 30px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #3A4736;
+}
+
+.reg__form .form__text-privacy strong {
+  font-weight: 600;
+}
+
+.reg__form .form__text-auth {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+  text-align: center;
+  padding-bottom: 13px;
+  padding-top: 15px;
+}
+
+.reg__form .form__text-auth .reg-form__goAuth {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3A4736;
+  padding-left: 10px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: 0.5s;
+}
+
+.reg__form .form__text-auth .reg-form__goAuth:hover {
+  text-decoration-color: #3A4736;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=reg.css.map */

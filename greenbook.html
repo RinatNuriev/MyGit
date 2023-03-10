@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книга растений</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="css/main.min.css">
+    <script defer="defer" src="scripts/js/main.min.js"></script>
+    <script defer src="scripts/js/gmailAuth.js"></script>
+    <script src="scripts/js/card_db.js"></script>
+</head>
+
+<body>
+    <!--============= Singup form =============-->
+    <div class="regModal"></div>
+    <div class="authModal"></div>
+    <!--============== Header =================-->
+    <div class="phone-menu_filter" onclick="phoneMenu('none')"></div>
+    <header class="header-main">
+        <div class="header__container container">
+            <div class="header__left-block">
+                <a class="main-logo_link" href="/">
+                    <div class="left-block__main-logo"></div>
+                </a>
+                <div class="left-block__nav-head">
+                    <ul class="nav-head__ul">
+                        <li class="nav-head__li"><a class="nav-head__btn"
+                                href="rasteniya-v-interyere/rasteniya-v-interyere.html">Растения в
+                                интерьере</a></li>
+                        <li class="nav-head__li"><a class="nav-head__btn" href="magazine.html">Журнал</a></li>
+                        <li class="nav-head__li"><a class="nav-head__btn current-page" href="#" >Книга растений</a></li>
+                        <li class="nav-head__li"><a class="nav-head__btn" href="#">Сообщество</a></li>
+                        <li class="nav-head__li nav-phone"><a onclick="registration('block')" class="nav-head__btn"
+                                href="#">Вход/ Регистрация</a></li>
+                        <li class="nav-head__li nav-phone"><a onclick="auth('block')" class="nav-head__btn"
+                                href="#">Избранное</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header__right-block">
+                <div class="right-block__search-head"><input class="search-head__input" type="search" name="" id=""
+                        placeholder="Поиск"> <a class="search-head__btn" href="#"><svg class="btn-head__img" width="18"
+                            height="18" viewBox="0 0 18 18">
+                            <path
+                                d="M7.2 0C3.22355 0 0 3.22355 0 7.2C0 11.1764 3.22355 14.4 7.2 14.4C8.86384 14.4 10.3959 13.8356 11.6151 12.8879L16.4636 17.7364C16.8151 18.0879 17.3849 18.0879 17.7364 17.7364C18.0879 17.3849 18.0879 16.8151 17.7364 16.4636L12.8879 11.6151C13.8356 10.3959 14.4 8.86384 14.4 7.2C14.4 3.22355 11.1764 0 7.2 0ZM1.8 7.2C1.8 4.21766 4.21766 1.8 7.2 1.8C10.1823 1.8 12.6 4.21766 12.6 7.2C12.6 10.1823 10.1823 12.6 7.2 12.6C4.21766 12.6 1.8 10.1823 1.8 7.2Z" />
+                        </svg></a></div>
+                <div class="right-block__btn-head">
+                    <svg class="heart__btn" onclick="auth('block')" viewBox="0 0 28 26">
+                        <path
+                            d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                            stroke="#3A4736" stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg onclick="registration('block')" class="person__btn" viewBox="0 0 28 26">
+                        <path
+                            d="M20 22.5C20 18.4365 15.7421 15.15 10.5 15.15C5.25786 15.15 1 18.4365 1 22.5M10.5 12C11.9666 12 13.3731 11.4469 14.4101 10.4623C15.4471 9.47774 16.0297 8.14239 16.0297 6.75C16.0297 5.35761 15.4471 4.02226 14.4101 3.03769C13.3731 2.05312 11.9666 1.5 10.5 1.5C9.03344 1.5 7.62694 2.05312 6.58992 3.03769C5.5529 4.02226 4.97031 5.35761 4.97031 6.75C4.97031 8.14239 5.5529 9.47774 6.58992 10.4623C7.62694 11.4469 9.03344 12 10.5 12V12Z"
+                            stroke="#3A4736" stroke-width="1.61853" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--============== Filter =================-->
+    <section class="filter">
+        <div class="container">
+            <h1 class="filter__title">Классификафия растений</h1>
+            <div class="filter-wrapper">
+                <div class="select ">
+                    <input class="select-input" type="hidden">
+                    <div class="all_fam select-head head-species">
+                        <p class="plants-species__input">Все</p>
+                        <p class="plants-species__input-phone">Вид растения</p>
+                        <svg class="plants-species_svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M16.2928 10.7071C16.9228 10.0771 16.4766 9 15.5857 9H8.41411C7.52321 9 7.07704 10.0771 7.70701 10.7071L11.2928 14.2929C11.6833 14.6834 12.3165 14.6834 12.707 14.2929L16.2928 10.7071Z"
+                                fill="#3A4736" />
+                        </svg>
+                    </div>
+                    <ul class="select-list plants-species">
+                        <li class="all_feat select-item">Все</li>
+                        <li class="palmae select-item">Пальмы</li>
+                        <li class="dec_leaf select-item">Декоративно-лиственные</li>
+                        <li class="dec_bloom select-item">Декоративно-цветущие</li>
+                        <li class="fern select-item">Папоротники</li>
+                        <li class="creeper select-item">Лианы</li>
+                        <li class="succulent select-item">Суккуленты</li>
+                        <li class="treelike select-item">Древовидные</li>
+                        <li class="сactaceae select-item">Кактусы</li>
+                    </ul>
+                </div>
+                <div class="select ">
+                    <input class="select-input" type="hidden">
+                    <div class="all_fam select-head head-type">
+                        <p class="plants-type__input">Все</p>
+                        <p class="plants-type__input-phone">Сложность</p>
+                        <svg class="plants-type_svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M16.2928 10.7071C16.9228 10.0771 16.4766 9 15.5857 9H8.41411C7.52321 9 7.07704 10.0771 7.70701 10.7071L11.2928 14.2929C11.6833 14.6834 12.3165 14.6834 12.707 14.2929L16.2928 10.7071Z"
+                                fill="#3A4736" />
+                        </svg>
+                    </div>
+                    <ul class="select-list plants-type">
+                        <li class="all_feat select-item">Все</li>
+                        <li class="demanding select-item">Требовательные</li>
+                        <li class="not_demanding select-item">Нетребовательные</li>
+                        <li class="light_loving select-item">Светолюбивые</li>
+                        <li class="shador_tolerant select-item">Теневыносливые</li>
+                        <li class="medical select-item">Лечебные</li>
+                    </ul>
+                </div>
+                <div class="sort sort-by-rating">
+                    <p class="sort-by-rating-text">По популярности</p>
+                </div>
+                <div class="sort sort-by-alphabet">
+                    <p class="sort-by-alphabet-text">По алфавиту</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============== Gallery =================-->
+    <section class="greenbook-gallery">
+        <div class="container">
+            <div class="greenbook-cards_first ">
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+            </div>
+
+            <div class="greenbook-cards_second">
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+            </div>
+            <div class="greenbook-cards_first">
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+            </div>
+            <div class="greenbook-cards_second">
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+                <div class="greenbook-card">
+                    <div class="greenbook-card__img-div">
+                        <img class="greenbook-card__img" src="img/Plants/Aglaonema.jpg" alt="">
+                    </div>
+                    <div class="greenbook-card__caption">
+                        <p class="greenbook-card__text">Монстера Деликатесная
+                            (Monstera Deliciosa)</p>
+                    </div>
+                    <div class="greenbook-card__like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></div>
+                </div>
+            </div>
+        </div> 
+
+    </section>
+    <div class="loadMore">
+        <button class="loadMore_btn">Показать еще</button>
+    </div>
+
+    <!--============== Background =================-->
+    <div class="background-between">
+        <div class="background-between_container">
+            <p class="background-between__text">My
+                Home Jungle</p>
+        </div>
+    </div>
+    <section class="greenbook-recently">
+        <div class="container">
+            <h3 class="greenbook-slider__title title">Недавно просмотренные</h3>
+            <div class="swiper greenbook-slider">
+                <div class="swiper-wrapper swiper-wrapper__greenbook">
+                    <div class="swiper-slide">
+                        <div class="greenbook-slider__card_img"><img src="img/articles/article_1.jpg" alt=""></div>
+                        <div class="greenbook-slider-title_div">
+                            <h5 class="greenbook-slider-title">Какие растения разместить на стеллаже?</h5>
+                        </div>
+                        <div class="greenbook-slider-like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                    stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="greenbook-slider__card_img"><img src="img/articles/article_1.jpg" alt=""></div>
+                        <div class="greenbook-slider-title_div">
+                            <h5 class="greenbook-slider-title">Какие растения разместить на стеллаже?</h5>
+                        </div>
+                        <div class="greenbook-slider-like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                    stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="greenbook-slider__card_img"><img src="img/articles/article_1.jpg" alt=""></div>
+                        <div class="greenbook-slider-title_div">
+                            <h5 class="greenbook-slider-title">Какие растения разместить на стеллаже?</h5>
+                        </div>
+                        <div class="greenbook-slider-like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                    stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="greenbook-slider__card_img"><img src="img/articles/article_1.jpg" alt=""></div>
+                        <div class="greenbook-slider-title_div">
+                            <h5 class="greenbook-slider-title">Какие растения разместить на стеллаже?</h5>
+                        </div>
+                        <div class="greenbook-slider-like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                    stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="greenbook-slider__card_img"><img src="img/articles/article_1.jpg" alt=""></div>
+                        <div class="greenbook-slider-title_div">
+                            <h5 class="greenbook-slider-title">Какие растения разместить на стеллаже?</h5>
+                        </div>
+                        <div class="greenbook-slider-like"><svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M24.9952 3.53337C24.3599 2.88873 23.6056 2.37736 22.7754 2.02847C21.9451 1.67958 21.0553 1.5 20.1566 1.5C19.258 1.5 18.3681 1.67958 17.5379 2.02847C16.7077 2.37736 15.9534 2.88873 15.3181 3.53337L13.9997 4.87059L12.6812 3.53337C11.398 2.23186 9.65749 1.50067 7.84269 1.50067C6.0279 1.50067 4.28743 2.23186 3.00418 3.53337C1.72092 4.83488 1 6.6001 1 8.44072C1 10.2813 1.72092 12.0466 3.00418 13.3481L4.32264 14.6853L13.9997 24.5L23.6767 14.6853L24.9952 13.3481C25.6307 12.7037 26.1349 11.9387 26.4789 11.0967C26.8229 10.2547 27 9.35216 27 8.44072C27 7.52928 26.8229 6.62677 26.4789 5.78475C26.1349 4.94273 25.6307 4.1777 24.9952 3.53337Z"
+                                    stroke-width="1.6126" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></div>
+                    </div>
+                    <!-- <div class="swiper-pagination"></div> -->
+
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+        <div class="greenbook-slider__background"></div>
+    </section>
+
+    <!--============= Footer =============-->
+    <footer class="main-page__footer">
+        <div class="container footer__container">
+            <div class="footer__logo"><svg width="183" height="84" viewBox="0 0 183 102" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1.64 38.46C1.37333 38.46 1.16 38.4067 1 38.3C0.866667 38.1933 0.8 38.06 0.8 37.9C0.8 37.74 0.88 37.6067 1.04 37.5C1.22667 37.3933 1.45333 37.3533 1.72 37.38C2.36 37.4333 2.82667 37.46 3.12 37.46C3.92 37.46 4.56 37.34 5.04 37.1C5.52 36.8333 5.84 36.3933 6 35.78C6.21333 34.9533 6.48 32.1533 6.8 27.38C7.14667 22.58 7.32 18.86 7.32 16.22C7.32 15.0467 7.28 14.2867 7.2 13.94C7.04 13.3267 6.72 12.9 6.24 12.66C5.76 12.3933 5.12 12.26 4.32 12.26C4.02667 12.26 3.56 12.2867 2.92 12.34H2.76C2.52 12.34 2.33333 12.2867 2.2 12.18C2.06667 12.0733 2 11.94 2 11.78C2 11.6467 2.06667 11.5267 2.2 11.42C2.36 11.3133 2.57333 11.26 2.84 11.26H8.36C8.97333 11.26 9.37333 11.42 9.56 11.74C9.61333 11.8467 9.69333 12.06 9.8 12.38L17.76 31.26C17.8667 31.5267 18 31.66 18.16 31.66C18.3467 31.66 18.48 31.54 18.56 31.3L26.72 12.34C26.8 12.1267 26.9067 11.9133 27.04 11.7C27.2 11.4067 27.6267 11.26 28.32 11.26H34.44C34.7067 11.26 34.9067 11.3133 35.04 11.42C35.2 11.5267 35.28 11.66 35.28 11.82C35.28 11.98 35.1867 12.1133 35 12.22C34.84 12.3267 34.6267 12.3667 34.36 12.34C33.72 12.2867 33.2533 12.26 32.96 12.26C32.16 12.26 31.52 12.3933 31.04 12.66C30.56 12.9 30.24 13.3267 30.08 13.94C30 14.2867 29.96 15.0467 29.96 16.22C29.96 18.86 30.12 22.5667 30.44 27.34C30.7867 32.1133 31.0667 34.9267 31.28 35.78C31.44 36.3933 31.76 36.8333 32.24 37.1C32.72 37.34 33.36 37.46 34.16 37.46C34.4533 37.46 34.92 37.4333 35.56 37.38H35.72C35.96 37.38 36.1467 37.4333 36.28 37.54C36.4133 37.6467 36.48 37.78 36.48 37.94C36.48 38.0733 36.4 38.1933 36.24 38.3C36.1067 38.4067 35.9067 38.46 35.64 38.46H23.4C23.1333 38.46 22.92 38.4067 22.76 38.3C22.6267 38.1933 22.56 38.06 22.56 37.9C22.56 37.74 22.64 37.6067 22.8 37.5C22.9867 37.3933 23.2133 37.3533 23.48 37.38C24.12 37.4333 24.5867 37.46 24.88 37.46C25.68 37.46 26.32 37.34 26.8 37.1C27.28 36.8333 27.6 36.3933 27.76 35.78C27.84 35.4067 27.88 34.7267 27.88 33.74C27.88 31.82 27.6667 27.42 27.24 20.54L27 17.02C26.9733 16.7 26.8667 16.54 26.68 16.54C26.5467 16.54 26.4133 16.66 26.28 16.9L18.48 35.1C18.32 35.4733 18.1333 35.7667 17.92 35.98C17.7333 36.1933 17.5467 36.3 17.36 36.3C16.9867 36.3 16.6533 35.9667 16.36 35.3L9.72 19.06C9.61333 18.82 9.48 18.7 9.32 18.7C9.16 18.7 9.05333 18.86 9 19.18C8.78667 21.7133 8.6 24.3667 8.44 27.14C8.28 29.8867 8.2 32.06 8.2 33.66C8.2 34.7 8.24 35.4067 8.32 35.78C8.48 36.3933 8.8 36.8333 9.28 37.1C9.76 37.34 10.4 37.46 11.2 37.46C11.4933 37.46 11.96 37.4333 12.6 37.38H12.76C13 37.38 13.1867 37.4333 13.32 37.54C13.4533 37.6467 13.52 37.78 13.52 37.94C13.52 38.0733 13.44 38.1933 13.28 38.3C13.1467 38.4067 12.9467 38.46 12.68 38.46H1.64ZM47.7456 23.3C48.0123 23.3 48.2123 23.3533 48.3456 23.46C48.5056 23.5667 48.5856 23.7 48.5856 23.86C48.5856 24.0467 48.5056 24.1933 48.3456 24.3C48.1856 24.4067 47.959 24.4333 47.6656 24.38C47.559 24.3533 47.4256 24.34 47.2656 24.34C46.7323 24.34 46.4656 24.66 46.4656 25.3C46.4656 25.7533 46.6123 26.3933 46.9056 27.22C47.199 28.02 47.679 29.2333 48.3456 30.86L49.5856 33.94C49.6923 34.2067 49.8256 34.34 49.9856 34.34C50.1723 34.34 50.3056 34.22 50.3856 33.98C51.239 31.8733 51.959 29.9933 52.5456 28.34C53.1323 26.66 53.4123 25.6467 53.3856 25.3C53.3856 24.9267 53.2656 24.6867 53.0256 24.58C52.8123 24.4467 52.479 24.4067 52.0256 24.46H51.8256C51.6123 24.46 51.439 24.4067 51.3056 24.3C51.1723 24.1933 51.1056 24.0733 51.1056 23.94C51.1056 23.78 51.1723 23.6467 51.3056 23.54C51.4656 23.4333 51.679 23.38 51.9456 23.38H56.5856C56.8523 23.38 57.0523 23.4333 57.1856 23.54C57.3456 23.62 57.4256 23.74 57.4256 23.9C57.4256 24.06 57.3456 24.2067 57.1856 24.34C57.0256 24.4467 56.799 24.4867 56.5056 24.46C56.2656 24.4333 56.0656 24.5 55.9056 24.66C55.7456 24.7933 55.5456 25.0333 55.3056 25.38C55.0923 25.7 54.6256 26.7267 53.9056 28.46C53.2123 30.1933 52.719 31.4333 52.4256 32.18C50.9856 35.8067 49.959 38.3267 49.3456 39.74C48.9456 40.5667 48.4256 41.4067 47.7856 42.26C47.1456 43.1133 46.5323 43.6333 45.9456 43.82C45.4923 43.9533 45.1456 44.02 44.9056 44.02C44.4523 44.02 44.0923 43.9 43.8256 43.66C43.5856 43.4467 43.4656 43.1933 43.4656 42.9C43.4656 42.58 43.6123 42.3 43.9056 42.06C44.199 41.82 44.6123 41.7 45.1456 41.7C45.6256 41.7 46.1323 41.4733 46.6656 41.02C47.2256 40.5933 47.679 40.0333 48.0256 39.34L48.4656 38.42C48.5456 38.26 48.5856 38.1 48.5856 37.94C48.5856 37.86 48.559 37.74 48.5056 37.58L46.6256 32.94C45.959 31.26 45.3323 29.74 44.7456 28.38C44.1856 27.02 43.7323 26.06 43.3856 25.5C42.879 24.7267 42.4123 24.3533 41.9856 24.38H41.9456C41.679 24.38 41.4656 24.3267 41.3056 24.22C41.1456 24.1133 41.0656 23.98 41.0656 23.82C41.0656 23.66 41.1323 23.54 41.2656 23.46C41.4256 23.3533 41.639 23.3 41.9056 23.3H47.7456ZM74.665 38.46C74.3983 38.46 74.185 38.4067 74.025 38.3C73.8917 38.1933 73.825 38.06 73.825 37.9C73.825 37.74 73.905 37.6067 74.065 37.5C74.2517 37.3933 74.4783 37.3533 74.745 37.38C75.385 37.4333 75.8517 37.46 76.145 37.46C76.945 37.46 77.585 37.34 78.065 37.1C78.545 36.8333 78.865 36.3933 79.025 35.78C79.265 34.82 79.385 31.18 79.385 24.86C79.385 18.54 79.265 14.9 79.025 13.94C78.865 13.3267 78.545 12.9 78.065 12.66C77.585 12.3933 76.945 12.26 76.145 12.26C75.8517 12.26 75.385 12.2867 74.745 12.34H74.585C74.345 12.34 74.1583 12.2867 74.025 12.18C73.8917 12.0733 73.825 11.94 73.825 11.78C73.825 11.6467 73.8917 11.5267 74.025 11.42C74.185 11.3133 74.3983 11.26 74.665 11.26H86.905C87.1717 11.26 87.3717 11.3133 87.505 11.42C87.665 11.5267 87.745 11.66 87.745 11.82C87.745 11.98 87.6517 12.1133 87.465 12.22C87.305 12.3267 87.0917 12.3667 86.825 12.34C86.185 12.2867 85.7183 12.26 85.425 12.26C84.625 12.26 83.985 12.3933 83.505 12.66C83.025 12.9 82.705 13.3267 82.545 13.94C82.305 14.9267 82.185 18.0333 82.185 23.26C82.185 23.9533 82.5183 24.3 83.185 24.3H94.785C95.4517 24.3 95.785 23.9533 95.785 23.26C95.785 18.0333 95.665 14.9267 95.425 13.94C95.265 13.3267 94.945 12.9 94.465 12.66C93.985 12.3933 93.345 12.26 92.545 12.26C92.2517 12.26 91.785 12.2867 91.145 12.34H90.985C90.745 12.34 90.5583 12.2867 90.425 12.18C90.2917 12.0733 90.225 11.94 90.225 11.78C90.225 11.6467 90.2917 11.5267 90.425 11.42C90.585 11.3133 90.7983 11.26 91.065 11.26H103.305C103.572 11.26 103.772 11.3133 103.905 11.42C104.065 11.5267 104.145 11.66 104.145 11.82C104.145 11.98 104.052 12.1133 103.865 12.22C103.705 12.3267 103.492 12.3667 103.225 12.34C102.585 12.2867 102.118 12.26 101.825 12.26C101.025 12.26 100.385 12.3933 99.905 12.66C99.425 12.9 99.105 13.3267 98.945 13.94C98.705 14.9 98.585 18.54 98.585 24.86C98.585 31.18 98.705 34.82 98.945 35.78C99.105 36.3933 99.425 36.8333 99.905 37.1C100.385 37.34 101.025 37.46 101.825 37.46C102.118 37.46 102.585 37.4333 103.225 37.38H103.385C103.625 37.38 103.812 37.4333 103.945 37.54C104.078 37.6467 104.145 37.78 104.145 37.94C104.145 38.0733 104.065 38.1933 103.905 38.3C103.772 38.4067 103.572 38.46 103.305 38.46H91.065C90.7983 38.46 90.585 38.4067 90.425 38.3C90.2917 38.1933 90.225 38.06 90.225 37.9C90.225 37.74 90.305 37.6067 90.465 37.5C90.6517 37.3933 90.8783 37.3533 91.145 37.38C91.785 37.4333 92.2517 37.46 92.545 37.46C93.345 37.46 93.985 37.34 94.465 37.1C94.945 36.8333 95.265 36.3933 95.425 35.78C95.665 34.82 95.785 31.7667 95.785 26.62C95.785 25.9267 95.4517 25.58 94.785 25.58H83.185C82.5183 25.58 82.185 25.9267 82.185 26.62C82.185 31.7667 82.305 34.82 82.545 35.78C82.705 36.3933 83.025 36.8333 83.505 37.1C83.985 37.34 84.625 37.46 85.425 37.46C85.7183 37.46 86.185 37.4333 86.825 37.38H86.985C87.225 37.38 87.4117 37.4333 87.545 37.54C87.6783 37.6467 87.745 37.78 87.745 37.94C87.745 38.0733 87.665 38.1933 87.505 38.3C87.3717 38.4067 87.1717 38.46 86.905 38.46H74.665ZM115.187 38.5C113.907 38.5 112.68 38.22 111.507 37.66C110.334 37.1 109.374 36.2467 108.627 35.1C107.907 33.9533 107.547 32.5667 107.547 30.94C107.547 29.2867 107.92 27.8867 108.667 26.74C109.414 25.5933 110.36 24.74 111.507 24.18C112.68 23.5933 113.907 23.3 115.187 23.3C116.467 23.3 117.694 23.5933 118.867 24.18C120.04 24.74 121 25.5933 121.747 26.74C122.494 27.8867 122.867 29.2867 122.867 30.94C122.867 32.5667 122.494 33.9533 121.747 35.1C121 36.2467 120.04 37.1 118.867 37.66C117.694 38.22 116.467 38.5 115.187 38.5ZM115.187 37.46C116.574 37.46 117.68 36.86 118.507 35.66C119.334 34.46 119.747 32.8733 119.747 30.9C119.747 28.9533 119.32 27.38 118.467 26.18C117.64 24.9533 116.547 24.34 115.187 24.34C113.827 24.34 112.72 24.9533 111.867 26.18C111.04 27.38 110.627 28.9533 110.627 30.9C110.627 32.8467 111.04 34.4333 111.867 35.66C112.72 36.86 113.827 37.46 115.187 37.46ZM128.261 25.82C128.261 25.7133 128.328 25.6067 128.461 25.5C128.621 25.3667 128.834 25.2733 129.101 25.22C129.928 25.0067 130.781 24.5667 131.661 23.9C131.768 23.8467 131.954 23.74 132.221 23.58C132.488 23.3933 132.701 23.3 132.861 23.3C133.234 23.3 133.421 23.46 133.421 23.78C133.421 24.0733 133.408 24.34 133.381 24.58C133.381 24.7667 133.421 24.8867 133.501 24.94C133.608 24.9667 133.728 24.9267 133.861 24.82C134.954 23.8067 136.114 23.3 137.341 23.3C138.194 23.3 139.021 23.5533 139.821 24.06C140.621 24.54 141.288 25.2467 141.821 26.18C141.981 26.4467 142.141 26.46 142.301 26.22C142.728 25.5267 143.394 24.8733 144.301 24.26C145.208 23.62 146.128 23.3 147.061 23.3C147.941 23.3 148.794 23.5667 149.621 24.1C150.474 24.6333 151.168 25.46 151.701 26.58C152.261 27.6733 152.541 29.0333 152.541 30.66L152.501 34.26C152.501 35.3267 152.594 36.1267 152.781 36.66C152.968 37.1667 153.341 37.42 153.901 37.42C154.114 37.42 154.274 37.4067 154.381 37.38L154.621 37.34C154.834 37.34 154.994 37.3933 155.101 37.5C155.234 37.6067 155.301 37.74 155.301 37.9C155.301 38.06 155.221 38.1933 155.061 38.3C154.928 38.4067 154.728 38.46 154.461 38.46H147.821C147.554 38.46 147.341 38.4067 147.181 38.3C147.048 38.1933 146.981 38.06 146.981 37.9C146.981 37.7133 147.061 37.5667 147.221 37.46C147.381 37.3533 147.608 37.3267 147.901 37.38C148.674 37.5133 149.168 37.22 149.381 36.5C149.621 35.7533 149.741 34.6067 149.741 33.06V30.9C149.741 29.78 149.554 28.78 149.181 27.9C148.834 27.02 148.368 26.34 147.781 25.86C147.221 25.38 146.648 25.14 146.061 25.14C144.994 25.14 144.181 25.7133 143.621 26.86C143.088 27.98 142.821 29.2467 142.821 30.66L142.781 34.26C142.781 35.3267 142.874 36.1267 143.061 36.66C143.248 37.1667 143.621 37.42 144.181 37.42C144.394 37.42 144.554 37.4067 144.661 37.38L144.901 37.34C145.114 37.34 145.274 37.3933 145.381 37.5C145.514 37.6067 145.581 37.74 145.581 37.9C145.581 38.06 145.501 38.1933 145.341 38.3C145.208 38.4067 145.008 38.46 144.741 38.46H138.101C137.834 38.46 137.621 38.4067 137.461 38.3C137.328 38.1933 137.261 38.06 137.261 37.9C137.261 37.7133 137.341 37.5667 137.501 37.46C137.661 37.3533 137.888 37.3267 138.181 37.38C138.954 37.5133 139.448 37.22 139.661 36.5C139.901 35.7533 140.021 34.6067 140.021 33.06V30.9C140.021 29.78 139.834 28.78 139.461 27.9C139.114 27.02 138.648 26.34 138.061 25.86C137.501 25.38 136.928 25.14 136.341 25.14C135.754 25.14 135.208 25.38 134.701 25.86C134.221 26.3133 133.834 26.8733 133.541 27.54C133.274 28.2067 133.141 28.7933 133.141 29.3C133.114 29.9667 133.101 30.8733 133.101 32.02C133.101 33.6733 133.168 35.0333 133.301 36.1C133.381 36.5533 133.528 36.8867 133.741 37.1C133.954 37.3133 134.261 37.42 134.661 37.42C134.848 37.42 135.008 37.4067 135.141 37.38L135.381 37.34C135.594 37.34 135.754 37.3933 135.861 37.5C135.994 37.6067 136.061 37.74 136.061 37.9C136.061 38.06 135.981 38.1933 135.821 38.3C135.688 38.4067 135.488 38.46 135.221 38.46H128.701C128.434 38.46 128.221 38.4067 128.061 38.3C127.928 38.1933 127.861 38.06 127.861 37.9C127.861 37.7133 127.941 37.5667 128.101 37.46C128.261 37.3533 128.488 37.3267 128.781 37.38C129.581 37.54 130.114 37.1133 130.381 36.1C130.541 35.5133 130.621 34.6067 130.621 33.38C130.621 32.5 130.608 31.82 130.581 31.34L130.541 28.66C130.541 27.94 130.421 27.3667 130.181 26.94C129.968 26.4867 129.608 26.26 129.101 26.26C128.834 26.26 128.621 26.22 128.461 26.14C128.328 26.06 128.261 25.9533 128.261 25.82ZM160.303 30.94C160.303 29.3133 160.663 27.9267 161.383 26.78C162.103 25.6067 163.023 24.74 164.143 24.18C165.263 23.5933 166.396 23.3 167.543 23.3C169.223 23.3 170.636 23.74 171.783 24.62C172.93 25.4733 173.503 26.6467 173.503 28.14C173.503 28.7 173.383 29.14 173.143 29.46C172.93 29.78 172.663 29.94 172.343 29.94L163.823 29.9C163.423 29.9 163.223 30.0867 163.223 30.46C163.223 32.2733 163.663 33.8333 164.543 35.14C165.423 36.42 166.623 37.06 168.143 37.06C169.263 37.06 170.236 36.8067 171.063 36.3C171.89 35.7933 172.49 35.2067 172.863 34.54C173.05 34.22 173.263 34.06 173.503 34.06C173.77 34.06 173.903 34.2333 173.903 34.58C173.903 34.8467 173.823 35.0733 173.663 35.26C172.916 36.3533 172.09 37.1667 171.183 37.7C170.276 38.2333 169.13 38.5 167.743 38.5C166.463 38.5 165.25 38.22 164.103 37.66C162.983 37.1 162.063 36.2467 161.343 35.1C160.65 33.9533 160.303 32.5667 160.303 30.94ZM163.543 28.26C163.516 28.3133 163.503 28.38 163.503 28.46C163.503 28.78 163.69 28.94 164.063 28.94L169.543 28.9C170.023 28.9 170.33 28.7933 170.463 28.58C170.596 28.34 170.663 28.0467 170.663 27.7C170.663 26.7133 170.37 25.9133 169.783 25.3C169.223 24.66 168.476 24.34 167.543 24.34C166.636 24.34 165.823 24.6733 165.103 25.34C164.41 26.0067 163.89 26.98 163.543 28.26Z"
+                        fill="#EDE1DE" />
+                    <path
+                        d="M50.4622 54.5C51.6828 54.4566 52.8063 54.3017 54.0205 53.9753C58.8571 52.6752 63.6523 51.002 68.4622 49.5"
+                        stroke="#EDE1DE" stroke-linecap="round" />
+                    <path
+                        d="M43.6965 74.5469C43.6965 73.9531 43.8215 73.3281 44.0715 72.6719C44.3528 72.0156 44.7747 71.5469 45.3372 71.2656C45.2122 72.2344 45.259 73.1875 45.4778 74.125C45.7278 75.0625 46.1184 75.8906 46.6497 76.6094C47.1809 77.3281 47.8684 77.9062 48.7122 78.3438C49.5559 78.75 50.5247 78.9531 51.6184 78.9531C52.9622 78.9531 54.1184 78.625 55.0872 77.9688C56.0872 77.2812 56.9153 76.4375 57.5715 75.4375C58.2278 74.4062 58.7122 73.2812 59.0247 72.0625C59.3372 70.8125 59.4934 69.6094 59.4934 68.4531V67.4688L56.7278 52.2344C56.6965 52.1094 56.6653 51.9219 56.634 51.6719C56.634 51.4219 56.6809 51.1875 56.7747 50.9688C56.8997 50.7188 57.0715 50.5469 57.2903 50.4531C57.5403 50.3594 57.9153 50.4062 58.4153 50.5938C58.4153 50.6562 58.4778 50.9688 58.6028 51.5312C58.759 52.0625 58.9153 52.7656 59.0715 53.6406C59.259 54.4844 59.4465 55.4375 59.634 56.5C59.8528 57.5625 60.0559 58.6406 60.2434 59.7344C60.4309 60.7969 60.6028 61.8281 60.759 62.8281C60.9153 63.7969 61.0403 64.625 61.134 65.3125C61.2903 66.9688 61.2434 68.6875 60.9934 70.4688C60.7434 72.25 60.2434 73.8906 59.4934 75.3906C58.7434 76.8906 57.6809 78.125 56.3059 79.0938C54.9622 80.0625 53.2747 80.5469 51.2434 80.5469C50.4934 80.5469 49.6653 80.3906 48.759 80.0781C47.884 79.7656 47.0715 79.3438 46.3215 78.8125C45.6028 78.2812 44.9778 77.6562 44.4465 76.9375C43.9465 76.1875 43.6965 75.3906 43.6965 74.5469ZM68.2009 80.5C67.6072 80.7188 67.0603 80.6719 66.5603 80.3594C66.0915 80.0156 65.6697 79.5156 65.2947 78.8594C64.9197 78.1719 64.5915 77.4062 64.3103 76.5625C64.029 75.6875 63.8103 74.8281 63.654 73.9844C63.4978 73.1406 63.3884 72.375 63.3259 71.6875C63.2947 71 63.3103 70.5 63.3728 70.1875C63.3728 69.875 63.3884 69.3906 63.4197 68.7344C63.4509 68.0781 63.4822 67.3438 63.5134 66.5312C63.5447 65.6875 63.5759 64.8281 63.6072 63.9531C63.6697 63.0469 63.7165 62.1719 63.7478 61.3281C63.779 60.4844 63.8103 59.75 63.8415 59.125C63.8728 58.4688 63.8884 57.9844 63.8884 57.6719C63.9509 57.6719 63.9978 57.6562 64.029 57.625L64.1697 57.5781C64.4822 57.5781 64.7478 57.7188 64.9665 58C65.1853 58.2812 65.3728 58.5469 65.529 58.7969C65.529 59.2344 65.5134 60.0156 65.4822 61.1406C65.4822 62.2656 65.4822 63.4688 65.4822 64.75C65.4822 66.0312 65.4822 67.25 65.4822 68.4062C65.5134 69.5312 65.529 70.3125 65.529 70.75C65.5603 71.125 65.6228 71.7188 65.7165 72.5312C65.8415 73.3125 65.9978 74.125 66.1853 74.9688C66.3728 75.7812 66.6228 76.5312 66.9353 77.2188C67.279 77.875 67.7009 78.25 68.2009 78.3438C69.5134 78.3438 70.6072 77.8594 71.4822 76.8906C72.3884 75.9219 73.1384 74.7031 73.7322 73.2344C74.3259 71.7656 74.7947 70.1875 75.1384 68.5C75.5134 66.7812 75.8259 65.1719 76.0759 63.6719C76.3259 62.1719 76.5447 60.9219 76.7322 59.9219C76.9509 58.8906 77.2009 58.3281 77.4822 58.2344L78.6072 58.4688L81.2322 76.6094C81.4197 76.7031 81.5759 76.8438 81.7009 77.0312C81.8259 77.2188 81.9353 77.4219 82.029 77.6406C82.154 77.8594 82.2322 78.0781 82.2634 78.2969C82.3259 78.5156 82.3572 78.6719 82.3572 78.7656C82.2947 78.9844 82.1072 79.2188 81.7947 79.4688C81.4822 79.7188 81.2165 79.8594 80.9978 79.8906H80.8103C80.779 79.8906 80.7478 79.8906 80.7165 79.8906C80.654 79.7969 80.5603 79.6562 80.4353 79.4688C80.3415 79.25 80.2322 79.0312 80.1072 78.8125C79.9822 78.5938 79.8728 78.375 79.779 78.1562C79.7165 77.9062 79.6697 77.75 79.6384 77.6875C79.5447 77.375 79.4353 76.8906 79.3103 76.2344C79.2165 75.5781 79.1228 74.8594 79.029 74.0781C78.9353 73.2656 78.8415 72.4219 78.7478 71.5469C78.6853 70.6406 78.6072 69.7812 78.5134 68.9688C78.4509 68.125 78.3728 67.3906 78.279 66.7656C78.2165 66.1094 78.1384 65.625 78.0447 65.3125C77.8884 66.0312 77.6697 66.8906 77.3884 67.8906C77.1072 68.8594 76.7478 69.8906 76.3103 70.9844C75.904 72.0781 75.4353 73.1562 74.904 74.2188C74.3728 75.25 73.7634 76.2188 73.0759 77.125C72.4197 78 71.6853 78.75 70.8728 79.375C70.0603 79.9688 69.1697 80.3438 68.2009 80.5ZM83.8459 63.0625C83.8459 62.875 83.8459 62.6562 83.8459 62.4062C83.8772 62.1562 83.9084 61.9219 83.9397 61.7031C84.0022 61.4531 84.1115 61.25 84.2678 61.0938C84.424 60.9375 84.6428 60.8594 84.924 60.8594C84.9865 60.8594 85.0803 60.875 85.2053 60.9062C85.3615 60.9062 85.4709 60.9062 85.5334 60.9062C85.5647 63.125 85.674 65.4062 85.8615 67.75C86.0803 70.0938 86.5022 72.3594 87.1272 74.5469C87.1584 74.2031 87.2365 73.625 87.3615 72.8125C87.5178 71.9688 87.674 71.0938 87.8303 70.1875C88.0178 69.25 88.1897 68.375 88.3459 67.5625C88.5334 66.75 88.6584 66.1719 88.7209 65.8281C88.9397 65.1719 89.2365 64.5 89.6115 63.8125C89.9865 63.0938 90.4397 62.4375 90.9709 61.8438C91.5334 61.25 92.1428 60.7656 92.799 60.3906C93.4865 60.0156 94.2053 59.8281 94.9553 59.8281C96.2053 59.8281 97.3147 60.1094 98.2834 60.6719C99.2522 61.2344 100.112 61.9844 100.862 62.9219C101.643 63.8281 102.299 64.875 102.83 66.0625C103.362 67.2188 103.799 68.4062 104.143 69.625C104.487 70.8438 104.737 72.0156 104.893 73.1406C105.049 74.2656 105.127 75.2656 105.127 76.1406V76.7031C105.127 76.8906 105.096 77.0781 105.033 77.2656C105.002 77.4219 104.924 77.5625 104.799 77.6875C104.705 77.7812 104.518 77.8281 104.237 77.8281C103.924 77.8281 103.658 77.6406 103.44 77.2656C103.408 76.4844 103.315 75.5781 103.158 74.5469C103.033 73.5156 102.846 72.4375 102.596 71.3125C102.377 70.1562 102.065 69.0312 101.658 67.9375C101.283 66.8125 100.799 65.8125 100.205 64.9375C99.6428 64.0625 98.9709 63.3594 98.1897 62.8281C97.4084 62.2656 96.4709 61.9844 95.3772 61.9844C94.5022 61.9844 93.7365 62.1406 93.0803 62.4531C92.4553 62.7656 91.924 63.2031 91.4865 63.7656C91.049 64.2969 90.6897 64.9375 90.4084 65.6875C90.1584 66.4062 89.9709 67.1875 89.8459 68.0312C89.7522 68.4688 89.6272 69.25 89.4709 70.375C89.3147 71.5 89.1428 72.7031 88.9553 73.9844C88.7678 75.2656 88.5959 76.4688 88.4397 77.5938C88.3147 78.7188 88.2365 79.5 88.2053 79.9375C88.1115 80.25 87.9397 80.4375 87.6897 80.5C87.4709 80.5625 87.2365 80.5938 86.9865 80.5938C86.9553 80.5938 86.8772 80.5781 86.7522 80.5469C86.6272 80.5469 86.5647 80.5312 86.5647 80.5L83.8928 64.2344C83.8928 64.1719 83.8772 64 83.8459 63.7188C83.8459 63.4375 83.8459 63.2188 83.8459 63.0625ZM112.007 98.4531C112.007 98.1719 112.022 97.875 112.053 97.5625C112.116 97.2812 112.21 97.0938 112.335 97C112.491 96.9375 112.663 97.0312 112.85 97.2812C113.069 97.5312 113.335 98.0469 113.647 98.8281C114.647 98.8281 115.553 98.6094 116.366 98.1719C117.21 97.7656 117.96 97.2031 118.616 96.4844C119.272 95.7656 119.819 94.9375 120.257 94C120.725 93.0625 121.116 92.0938 121.428 91.0938C121.741 90.0938 121.96 89.0938 122.085 88.0938C122.241 87.125 122.319 86.2188 122.319 85.375C122.319 82.125 122.007 78.8125 121.382 75.4375C120.757 72.0312 119.803 68.8281 118.522 65.8281C117.897 67.2031 117.35 68.625 116.882 70.0938C116.413 71.5625 115.85 72.9844 115.194 74.3594C114.538 75.7031 113.725 76.9219 112.757 78.0156C111.819 79.0781 110.553 79.9219 108.96 80.5469C108.397 80.5469 107.944 80.4062 107.6 80.125C107.288 79.8125 107.038 79.4375 106.85 79C106.694 78.5625 106.6 78.1094 106.569 77.6406C106.538 77.1406 106.522 76.6719 106.522 76.2344C106.522 75.5469 106.6 74.6406 106.757 73.5156C106.944 72.3594 107.225 71.125 107.6 69.8125C107.975 68.5 108.413 67.1875 108.913 65.875C109.444 64.5625 110.053 63.375 110.741 62.3125C111.428 61.25 112.194 60.3906 113.038 59.7344C113.882 59.0781 114.803 58.75 115.803 58.75C116.116 58.75 116.428 58.8281 116.741 58.9844C117.053 59.1406 117.366 59.3125 117.678 59.5L118.616 60.0625C118.928 60.2188 119.257 60.3438 119.6 60.4375C119.694 60.8438 119.85 61.5156 120.069 62.4531C120.288 63.3906 120.522 64.4531 120.772 65.6406C121.022 66.7969 121.272 68.0312 121.522 69.3438C121.803 70.6562 122.069 71.9062 122.319 73.0938C122.569 74.25 122.788 75.3125 122.975 76.2812C123.194 77.2188 123.335 77.9062 123.397 78.3438C123.428 78.5625 123.475 78.9375 123.538 79.4688C123.632 79.9688 123.694 80.5 123.725 81.0625C123.788 81.6562 123.835 82.2031 123.866 82.7031C123.928 83.2031 123.96 83.5469 123.96 83.7344C123.96 84.6406 123.897 85.7031 123.772 86.9219C123.647 88.1406 123.428 89.3906 123.116 90.6719C122.803 91.9531 122.397 93.2188 121.897 94.4688C121.397 95.7188 120.772 96.8438 120.022 97.8438C119.272 98.8438 118.382 99.6406 117.35 100.234C116.35 100.859 115.194 101.172 113.882 101.172C113.132 101.172 112.632 100.891 112.382 100.328C112.132 99.7656 112.007 99.1406 112.007 98.4531ZM108.116 75.8125V76.6094C108.116 76.8906 108.147 77.1719 108.21 77.4531C108.272 77.7031 108.382 77.9375 108.538 78.1562C108.694 78.3438 108.944 78.4375 109.288 78.4375C109.85 78.4062 110.413 78.0938 110.975 77.5C111.569 76.9062 112.1 76.2188 112.569 75.4375C113.069 74.6562 113.507 73.875 113.882 73.0938C114.288 72.2812 114.569 71.6719 114.725 71.2656C114.85 70.9844 115.038 70.4531 115.288 69.6719C115.569 68.8906 115.85 68.0781 116.132 67.2344C116.413 66.3594 116.678 65.5312 116.928 64.75C117.178 63.9375 117.35 63.375 117.444 63.0625V62.8281C117.444 62.5781 117.335 62.3594 117.116 62.1719C116.928 61.9844 116.694 61.8438 116.413 61.75C116.163 61.6562 115.897 61.5781 115.616 61.5156C115.335 61.4531 115.1 61.4219 114.913 61.4219C114.225 61.4219 113.569 61.75 112.944 62.4062C112.35 63.0625 111.803 63.8906 111.303 64.8906C110.803 65.8906 110.35 66.9844 109.944 68.1719C109.569 69.3281 109.241 70.4531 108.96 71.5469C108.678 72.6094 108.46 73.5469 108.303 74.3594C108.178 75.1406 108.116 75.625 108.116 75.8125ZM127.464 79.4219C127.433 78.6094 127.355 77.3594 127.23 75.6719C127.105 73.9531 126.964 72.0312 126.808 69.9062C126.683 67.75 126.542 65.5 126.386 63.1562C126.261 60.7812 126.12 58.5156 125.964 56.3594C125.839 54.2031 125.698 52.2812 125.542 50.5938C125.417 48.875 125.339 47.6094 125.308 46.7969V46.1875C125.308 45.4688 125.667 45.1094 126.386 45.1094C126.448 45.1094 126.542 45.125 126.667 45.1562C126.792 45.1562 126.886 45.1562 126.948 45.1562C127.136 47.875 127.308 50.4844 127.464 52.9844C127.62 55.4844 127.777 57.9688 127.933 60.4375C128.089 62.9062 128.261 65.3906 128.448 67.8906C128.636 70.3594 128.855 72.9375 129.105 75.625C129.448 75.9688 129.636 76.375 129.667 76.8438C129.698 77.2812 129.714 77.7344 129.714 78.2031C129.714 78.4219 129.698 78.6719 129.667 78.9531C129.667 79.2031 129.62 79.4531 129.527 79.7031C129.433 79.9219 129.277 80.125 129.058 80.3125C128.87 80.4688 128.62 80.5469 128.308 80.5469C128.027 80.5469 127.823 80.4375 127.698 80.2188C127.605 80 127.527 79.7344 127.464 79.4219ZM132.656 69.625C131.937 70.0625 131.203 70.4062 130.453 70.6562C129.703 70.875 129.093 70.7188 128.625 70.1875C128.625 69.5938 128.828 69.2031 129.234 69.0156C129.64 68.7969 130.093 68.625 130.593 68.5C131.125 68.375 131.64 68.2188 132.14 68.0312C132.672 67.8438 133.031 67.4688 133.218 66.9062C133.406 66.2812 133.578 65.5312 133.734 64.6562C133.89 63.7812 134.109 62.9375 134.39 62.125C134.672 61.3125 135.078 60.6406 135.609 60.1094C136.14 59.5469 136.875 59.2656 137.812 59.2656C138.343 59.2656 139 59.4531 139.781 59.8281C140.593 60.1719 141.359 60.5938 142.078 61.0938C142.797 61.5938 143.406 62.125 143.906 62.6875C144.406 63.25 144.656 63.7656 144.656 64.2344C144.656 64.4531 144.625 64.6562 144.562 64.8438C144.531 65.0312 144.375 65.1875 144.093 65.3125L134.859 68.5L134.812 68.7344C134.812 68.8594 134.797 69.0312 134.765 69.25V69.8125C134.765 70.0312 134.765 70.1875 134.765 70.2812C134.765 70.9062 134.812 71.6875 134.906 72.625C135 73.5312 135.187 74.4219 135.468 75.2969C135.781 76.1406 136.203 76.875 136.734 77.5C137.265 78.125 137.984 78.4375 138.89 78.4375C139.234 78.4375 139.515 78.375 139.734 78.25C139.984 78.0938 140.218 77.9375 140.437 77.7812C140.687 77.5938 140.922 77.4375 141.14 77.3125C141.39 77.1562 141.672 77.0781 141.984 77.0781C141.984 77.5469 141.875 78 141.656 78.4375C141.468 78.8438 141.203 79.2031 140.859 79.5156C140.515 79.8281 140.125 80.0781 139.687 80.2656C139.25 80.4531 138.812 80.5469 138.375 80.5469C137.187 80.5469 136.234 80.1406 135.515 79.3281C134.797 78.4844 134.234 77.4844 133.828 76.3281C133.453 75.1406 133.187 73.9375 133.031 72.7188C132.875 71.4688 132.75 70.4375 132.656 69.625ZM138.375 61.3281C137.812 61.3281 137.328 61.4844 136.922 61.7969C136.547 62.1094 136.234 62.5 135.984 62.9688C135.734 63.4375 135.547 63.9531 135.422 64.5156C135.328 65.0469 135.281 65.5312 135.281 65.9688C135.781 65.9688 136.328 65.9375 136.922 65.875C137.547 65.8125 138.156 65.6875 138.75 65.5C139.343 65.3125 139.875 65.0781 140.343 64.7969C140.843 64.4844 141.187 64.1094 141.375 63.6719C140.906 62.9219 140.468 62.3438 140.062 61.9375C139.656 61.5312 139.093 61.3281 138.375 61.3281Z"
+                        fill="#EDE1DE" />
+                </svg></div>
+            <div class="footer__nav">
+                <ul><a href="">
+                        <li class="nal_li_first">О проекте</li>
+                    </a><a href="">
+                        <li class="nal_li_second">Книга растений</li>
+                    </a><a href="">
+                        <li>Полезные статьи</li>
+                    </a></ul>
+                <ul><a href="">
+                        <li class="nal_li_first">Личный кабинет</li>
+                    </a><a href="">
+                        <li class="nal_li_second">Как стать автором</li>
+                    </a><a href="">
+                        <li>Растения в интерьере</li>
+                    </a></ul>
+                <ul><a href="">
+                        <li class="nal_li_first">Рекламодателям</li>
+                    </a><a href="">
+                        <li class="nal_li_second">Пользовательские соглашения</li>
+                    </a><a href="">
+                        <li>Политика конфеденциальности</li>
+                    </a></ul>
+            </div>
+            <div class="footer__btn">
+                <svg width="37" height="28" viewBox="0 0 41 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="path-1-inside-1_1853_81" fill="white">
+                        <path
+                            d="M40.18 0H0.82C0.602522 0 0.393952 0.0914943 0.240173 0.254355C0.0863928 0.417215 0 0.638101 0 0.868421V30.3947C0 31.0857 0.259178 31.7484 0.720517 32.2369C1.18186 32.7255 1.80757 33 2.46 33H38.54C39.1924 33 39.8181 32.7255 40.2795 32.2369C40.7408 31.7484 41 31.0857 41 30.3947V0.868421C41 0.638101 40.9136 0.417215 40.7598 0.254355C40.606 0.0914943 40.3975 0 40.18 0ZM38.0685 1.73684L20.5 18.8013L2.9315 1.73684H38.0685ZM38.54 31.2632H2.46C2.24252 31.2632 2.03395 31.1717 1.88017 31.0088C1.72639 30.8459 1.64 30.6251 1.64 30.3947V2.84408L19.9465 20.6033C20.0954 20.7545 20.2937 20.839 20.5 20.839C20.7063 20.839 20.9046 20.7545 21.0535 20.6033L39.36 2.84408V30.3947C39.36 30.6251 39.2736 30.8459 39.1198 31.0088C38.966 31.1717 38.7575 31.2632 38.54 31.2632Z" />
+                    </mask>
+                    <path
+                        d="M40.18 0H0.82C0.602522 0 0.393952 0.0914943 0.240173 0.254355C0.0863928 0.417215 0 0.638101 0 0.868421V30.3947C0 31.0857 0.259178 31.7484 0.720517 32.2369C1.18186 32.7255 1.80757 33 2.46 33H38.54C39.1924 33 39.8181 32.7255 40.2795 32.2369C40.7408 31.7484 41 31.0857 41 30.3947V0.868421C41 0.638101 40.9136 0.417215 40.7598 0.254355C40.606 0.0914943 40.3975 0 40.18 0ZM38.0685 1.73684L20.5 18.8013L2.9315 1.73684H38.0685ZM38.54 31.2632H2.46C2.24252 31.2632 2.03395 31.1717 1.88017 31.0088C1.72639 30.8459 1.64 30.6251 1.64 30.3947V2.84408L19.9465 20.6033C20.0954 20.7545 20.2937 20.839 20.5 20.839C20.7063 20.839 20.9046 20.7545 21.0535 20.6033L39.36 2.84408V30.3947C39.36 30.6251 39.2736 30.8459 39.1198 31.0088C38.966 31.1717 38.7575 31.2632 38.54 31.2632Z"
+                        fill="#EEE4E2" />
+                    <path
+                        d="M38.0685 1.73684L39.462 3.17149L42.9981 -0.263158H38.0685V1.73684ZM20.5 18.8013L19.1065 20.236L20.5 21.5895L21.8935 20.236L20.5 18.8013ZM2.9315 1.73684V-0.263158H-1.99808L1.53802 3.17149L2.9315 1.73684ZM1.64 2.84408L3.03259 1.40857L-0.36 -1.8826V2.84408H1.64ZM19.9465 20.6033L21.3719 19.2004L21.3557 19.1839L21.3391 19.1678L19.9465 20.6033ZM20.5 20.839V18.839V20.839ZM21.0535 20.6033L19.6609 19.1678L19.6443 19.1839L19.6281 19.2004L21.0535 20.6033ZM39.36 2.84408H41.36V-1.8826L37.9674 1.40857L39.36 2.84408ZM40.18 -2H0.82V2H40.18V-2ZM0.82 -2C0.0338564 -2 -0.695167 -1.66821 -1.214 -1.11874L1.69435 1.62745C1.48307 1.8512 1.17119 2 0.82 2V-2ZM-1.214 -1.11874C-1.72916 -0.57316 -2 0.143511 -2 0.868421H2C2 1.13269 1.90194 1.40759 1.69435 1.62745L-1.214 -1.11874ZM-2 0.868421V30.3947H2V0.868421H-2ZM-2 30.3947C-2 31.5803 -1.55637 32.7387 -0.733656 33.61L2.17469 30.8638C2.07473 30.758 2 30.5911 2 30.3947H-2ZM-0.733656 33.61C0.0927343 34.4852 1.2389 35 2.46 35V31C2.37624 31 2.27098 30.9658 2.17469 30.8638L-0.733656 33.61ZM2.46 35H38.54V31H2.46V35ZM38.54 35C39.7611 35 40.9073 34.4852 41.7337 33.61L38.8253 30.8638C38.729 30.9658 38.6238 31 38.54 31V35ZM41.7337 33.61C42.5564 32.7387 43 31.5803 43 30.3947H39C39 30.5911 38.9253 30.758 38.8253 30.8638L41.7337 33.61ZM43 30.3947V0.868421H39V30.3947H43ZM43 0.868421C43 0.143506 42.7292 -0.573163 42.214 -1.11874L39.3057 1.62745C39.0981 1.40759 39 1.1327 39 0.868421H43ZM42.214 -1.11874C41.6952 -1.66821 40.9661 -2 40.18 -2V2C39.8288 2 39.5169 1.85119 39.3057 1.62745L42.214 -1.11874ZM36.675 0.302199L19.1065 17.3667L21.8935 20.236L39.462 3.17149L36.675 0.302199ZM21.8935 17.3667L4.32498 0.302199L1.53802 3.17149L19.1065 20.236L21.8935 17.3667ZM2.9315 3.73684H38.0685V-0.263158H2.9315V3.73684ZM38.54 29.2632H2.46V33.2632H38.54V29.2632ZM2.46 29.2632C2.81118 29.2632 3.12306 29.412 3.33435 29.6357L0.426 32.3819C0.944842 32.9314 1.67387 33.2632 2.46 33.2632V29.2632ZM3.33435 29.6357C3.54194 29.8556 3.64 30.1305 3.64 30.3947H-0.36C-0.36 31.1196 -0.0891586 31.8363 0.426 32.3819L3.33435 29.6357ZM3.64 30.3947V2.84408H-0.36V30.3947H3.64ZM0.247407 4.27959L18.5539 22.0388L21.3391 19.1678L3.03259 1.40857L0.247407 4.27959ZM18.5211 22.0062C19.0338 22.5271 19.7407 22.839 20.5 22.839V18.839C20.8467 18.839 21.157 18.982 21.3719 19.2004L18.5211 22.0062ZM20.5 22.839C21.2593 22.839 21.9662 22.5271 22.4789 22.0062L19.6281 19.2004C19.843 18.982 20.1533 18.839 20.5 18.839V22.839ZM22.4461 22.0388L40.7526 4.27959L37.9674 1.40857L19.6609 19.1678L22.4461 22.0388ZM37.36 2.84408V30.3947H41.36V2.84408H37.36ZM37.36 30.3947C37.36 30.1305 37.4581 29.8556 37.6657 29.6357L40.574 32.3819C41.0892 31.8363 41.36 31.1196 41.36 30.3947H37.36ZM37.6657 29.6357C37.8769 29.412 38.1888 29.2632 38.54 29.2632V33.2632C39.3261 33.2632 40.0552 32.9314 40.574 32.3819L37.6657 29.6357Z"
+                        fill="#EEE4E2" mask="url(#path-1-inside-1_1853_81)" />
+                </svg>
+                <svg width="35" height="30" viewBox="0 0 43 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M41.1729 1.51198C40.8482 1.26187 40.4533 1.09542 40.0305 1.03051C39.6078 0.965603 39.1732 1.0047 38.7735 1.14359L2.48759 13.8616C2.01603 14.0289 1.61751 14.3274 1.35115 14.7127C1.0848 15.0981 0.964796 15.5497 1.00895 16.0007C1.05311 16.4516 1.25907 16.8779 1.59628 17.2162C1.93349 17.5545 2.38398 17.7868 2.88093 17.8787L12.7342 19.6505V30.4915C12.7282 30.9091 12.864 31.3186 13.1237 31.6661C13.3835 32.0136 13.755 32.2829 14.1895 32.4387C14.4837 32.5431 14.7973 32.5966 15.1139 32.5965C15.4211 32.5968 15.7253 32.5427 16.0089 32.4373C16.2925 32.3319 16.5498 32.1773 16.7659 31.9826L22.3907 26.9655L30.6903 33.4736C31.1156 33.8171 31.6703 34.005 32.244 33.9999C32.4912 33.9993 32.7369 33.9638 32.9717 33.8946C33.3583 33.7815 33.706 33.5818 33.9815 33.3146C34.2569 33.0474 34.451 32.7216 34.545 32.3685L41.9399 3.5644C42.0367 3.19248 42.0163 2.80392 41.8809 2.4417C41.7455 2.07947 41.5005 1.75771 41.1729 1.51198ZM2.56625 15.8789C2.54286 15.7269 2.579 15.5723 2.66858 15.4413C2.75816 15.3102 2.89568 15.2108 3.05793 15.1597L36.3347 3.51177L13.3439 18.3173L3.1956 16.5105C3.02658 16.4832 2.87268 16.4062 2.75857 16.2917C2.64446 16.1772 2.57674 16.0318 2.56625 15.8789ZM15.6449 30.9827C15.538 31.0817 15.4002 31.1498 15.2494 31.1779C15.0985 31.2061 14.9416 31.1931 14.7992 31.1405C14.6542 31.0882 14.53 30.9985 14.4424 30.8829C14.3548 30.7673 14.3079 30.631 14.3075 30.4915V20.6153L21.2107 26.0358L15.6449 30.9827ZM40.4058 3.26618L33.011 32.0527C32.9815 32.1721 32.9167 32.2823 32.8233 32.3717C32.7299 32.4612 32.6114 32.5267 32.48 32.5615C32.3531 32.6021 32.216 32.6105 32.084 32.5858C31.952 32.561 31.8304 32.504 31.7326 32.4211L14.7796 19.1242L40.2878 2.68729C40.3521 2.77091 40.3959 2.86572 40.4162 2.96548C40.4366 3.06525 40.433 3.16772 40.4058 3.26618Z"
+                        fill="#EEE4E2" stroke="#EEE4E2" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <mask id="path-1-inside-1_3050_1323" fill="white">
+                        <path
+                            d="M14.9966 6.36082e-07C12.3811 0.000427008 9.81123 0.684808 7.54192 1.98523C5.2726 3.28566 3.38276 5.15692 2.05991 7.41333C0.737066 9.66975 0.0272043 12.2329 0.00076649 14.8484C-0.0256714 17.4639 0.632234 20.0408 1.9092 22.3235L0.615163 26.8382C0.509494 27.1916 0.501383 27.5669 0.591691 27.9245C0.681998 28.2821 0.867359 28.6086 1.12813 28.8694C1.3889 29.1301 1.71536 29.3155 2.07292 29.4058C2.43047 29.4961 2.8058 29.488 3.15912 29.3824L7.67353 28.0882C9.67385 29.2083 11.9043 29.8548 14.1934 29.9782C16.4826 30.1017 18.7696 29.6987 20.8787 28.8003C22.9879 27.9018 24.863 26.5319 26.3601 24.7956C27.8572 23.0593 28.9364 21.0029 29.5148 18.7845C30.0932 16.566 30.1554 14.2445 29.6966 11.9982C29.2378 9.75193 28.2703 7.64072 26.8683 5.82677C25.4663 4.01281 23.6672 2.54439 21.6092 1.5343C19.5512 0.524207 17.2891 -0.000666979 14.9966 6.36082e-07ZM14.9966 28.2353C12.6212 28.2346 10.2898 27.5946 8.24703 26.3824C8.1066 26.3074 7.95032 26.2671 7.79117 26.2647C7.71161 26.2599 7.63184 26.2699 7.5559 26.2941L2.67385 27.6912C2.62276 27.7069 2.56833 27.7084 2.51644 27.6955C2.46455 27.6827 2.41715 27.6559 2.37935 27.6181C2.34154 27.5802 2.31476 27.5328 2.30187 27.481C2.28899 27.4291 2.2905 27.3746 2.30623 27.3235L3.7032 22.4412C3.73618 22.326 3.74537 22.2053 3.7302 22.0865C3.71503 21.9677 3.67582 21.8532 3.61497 21.75C2.12576 19.2381 1.50904 16.3042 1.86088 13.4053C2.21271 10.5063 3.51334 7.80517 5.56018 5.7225C7.60701 3.63983 10.2851 2.2926 13.1774 1.89067C16.0696 1.48874 19.0135 2.05468 21.5506 3.50033C24.0877 4.94598 26.0755 7.19017 27.2044 9.88333C28.3332 12.5765 28.5398 15.5674 27.7918 18.3902C27.0439 21.213 25.3834 23.7091 23.0691 25.4898C20.7548 27.2705 17.9166 28.2358 14.9966 28.2353ZM22.5696 17.4706L19.5551 15.75C19.2378 15.571 18.8787 15.4794 18.5145 15.4846C18.1502 15.4897 17.7938 15.5915 17.4817 15.7794L15.5995 16.9118C14.5297 16.3425 13.6542 15.4669 13.085 14.3971L14.2172 12.5147C14.4051 12.2026 14.5069 11.8462 14.512 11.4819C14.5172 11.1176 14.4256 10.7585 14.2466 10.4412L12.5262 7.42647C12.3591 7.1371 12.1191 6.89657 11.8302 6.72885C11.5412 6.56114 11.2133 6.47209 10.8792 6.47059C9.55576 6.47058 8.28629 6.99535 7.34909 7.92985C6.41189 8.86436 5.88342 10.1324 5.87953 11.4559C5.8776 13.118 6.20328 14.7641 6.83795 16.3002C7.47262 17.8363 8.40382 19.2323 9.57833 20.4082C10.7528 21.5842 12.1476 22.517 13.6829 23.1535C15.2181 23.79 16.8638 24.1176 18.5258 24.1176H18.5405C19.8639 24.1138 21.1318 23.5853 22.0663 22.648C23.0007 21.7107 23.5255 20.4412 23.5255 19.1176C23.524 18.7835 23.4349 18.4556 23.2672 18.1666C23.0995 17.8776 22.859 17.6377 22.5696 17.4706ZM18.5405 22.3529H18.5258C15.6384 22.349 12.8707 21.1992 10.8304 19.1561C8.79011 17.1129 7.64412 14.3434 7.64412 11.4559C7.64801 10.6004 7.99057 9.78124 8.59684 9.17768C9.20312 8.57413 10.0238 8.23529 10.8792 8.23529C10.9245 8.23901 10.9667 8.26008 10.9969 8.29412L12.7173 11.3088C12.7409 11.3548 12.752 11.4062 12.7494 11.4579C12.7469 11.5095 12.7307 11.5595 12.7026 11.6029L11.3351 13.9118C11.2576 14.0306 11.2116 14.1671 11.2013 14.3086C11.1911 14.45 11.2168 14.5918 11.2762 14.7206C12.0802 16.495 13.5017 17.9166 15.276 18.7206C15.4048 18.78 15.5465 18.8058 15.688 18.7955C15.8294 18.7852 15.9659 18.7392 16.0848 18.6618L18.3934 17.2941C18.4368 17.266 18.4869 17.2499 18.5385 17.2473C18.5901 17.2447 18.6415 17.2558 18.6875 17.2794L21.702 19C21.7361 19.0302 21.7572 19.0723 21.7609 19.1176C21.7609 19.9732 21.4221 20.7938 20.8185 21.4002C20.215 22.0065 19.3959 22.3491 18.5405 22.3529Z" />
+                    </mask>
+                    <path
+                        d="M14.9966 6.36082e-07C12.3811 0.000427008 9.81123 0.684808 7.54192 1.98523C5.2726 3.28566 3.38276 5.15692 2.05991 7.41333C0.737066 9.66975 0.0272043 12.2329 0.00076649 14.8484C-0.0256714 17.4639 0.632234 20.0408 1.9092 22.3235L0.615163 26.8382C0.509494 27.1916 0.501383 27.5669 0.591691 27.9245C0.681998 28.2821 0.867359 28.6086 1.12813 28.8694C1.3889 29.1301 1.71536 29.3155 2.07292 29.4058C2.43047 29.4961 2.8058 29.488 3.15912 29.3824L7.67353 28.0882C9.67385 29.2083 11.9043 29.8548 14.1934 29.9782C16.4826 30.1017 18.7696 29.6987 20.8787 28.8003C22.9879 27.9018 24.863 26.5319 26.3601 24.7956C27.8572 23.0593 28.9364 21.0029 29.5148 18.7845C30.0932 16.566 30.1554 14.2445 29.6966 11.9982C29.2378 9.75193 28.2703 7.64072 26.8683 5.82677C25.4663 4.01281 23.6672 2.54439 21.6092 1.5343C19.5512 0.524207 17.2891 -0.000666979 14.9966 6.36082e-07ZM14.9966 28.2353C12.6212 28.2346 10.2898 27.5946 8.24703 26.3824C8.1066 26.3074 7.95032 26.2671 7.79117 26.2647C7.71161 26.2599 7.63184 26.2699 7.5559 26.2941L2.67385 27.6912C2.62276 27.7069 2.56833 27.7084 2.51644 27.6955C2.46455 27.6827 2.41715 27.6559 2.37935 27.6181C2.34154 27.5802 2.31476 27.5328 2.30187 27.481C2.28899 27.4291 2.2905 27.3746 2.30623 27.3235L3.7032 22.4412C3.73618 22.326 3.74537 22.2053 3.7302 22.0865C3.71503 21.9677 3.67582 21.8532 3.61497 21.75C2.12576 19.2381 1.50904 16.3042 1.86088 13.4053C2.21271 10.5063 3.51334 7.80517 5.56018 5.7225C7.60701 3.63983 10.2851 2.2926 13.1774 1.89067C16.0696 1.48874 19.0135 2.05468 21.5506 3.50033C24.0877 4.94598 26.0755 7.19017 27.2044 9.88333C28.3332 12.5765 28.5398 15.5674 27.7918 18.3902C27.0439 21.213 25.3834 23.7091 23.0691 25.4898C20.7548 27.2705 17.9166 28.2358 14.9966 28.2353ZM22.5696 17.4706L19.5551 15.75C19.2378 15.571 18.8787 15.4794 18.5145 15.4846C18.1502 15.4897 17.7938 15.5915 17.4817 15.7794L15.5995 16.9118C14.5297 16.3425 13.6542 15.4669 13.085 14.3971L14.2172 12.5147C14.4051 12.2026 14.5069 11.8462 14.512 11.4819C14.5172 11.1176 14.4256 10.7585 14.2466 10.4412L12.5262 7.42647C12.3591 7.1371 12.1191 6.89657 11.8302 6.72885C11.5412 6.56114 11.2133 6.47209 10.8792 6.47059C9.55576 6.47058 8.28629 6.99535 7.34909 7.92985C6.41189 8.86436 5.88342 10.1324 5.87953 11.4559C5.8776 13.118 6.20328 14.7641 6.83795 16.3002C7.47262 17.8363 8.40382 19.2323 9.57833 20.4082C10.7528 21.5842 12.1476 22.517 13.6829 23.1535C15.2181 23.79 16.8638 24.1176 18.5258 24.1176H18.5405C19.8639 24.1138 21.1318 23.5853 22.0663 22.648C23.0007 21.7107 23.5255 20.4412 23.5255 19.1176C23.524 18.7835 23.4349 18.4556 23.2672 18.1666C23.0995 17.8776 22.859 17.6377 22.5696 17.4706ZM18.5405 22.3529H18.5258C15.6384 22.349 12.8707 21.1992 10.8304 19.1561C8.79011 17.1129 7.64412 14.3434 7.64412 11.4559C7.64801 10.6004 7.99057 9.78124 8.59684 9.17768C9.20312 8.57413 10.0238 8.23529 10.8792 8.23529C10.9245 8.23901 10.9667 8.26008 10.9969 8.29412L12.7173 11.3088C12.7409 11.3548 12.752 11.4062 12.7494 11.4579C12.7469 11.5095 12.7307 11.5595 12.7026 11.6029L11.3351 13.9118C11.2576 14.0306 11.2116 14.1671 11.2013 14.3086C11.1911 14.45 11.2168 14.5918 11.2762 14.7206C12.0802 16.495 13.5017 17.9166 15.276 18.7206C15.4048 18.78 15.5465 18.8058 15.688 18.7955C15.8294 18.7852 15.9659 18.7392 16.0848 18.6618L18.3934 17.2941C18.4368 17.266 18.4869 17.2499 18.5385 17.2473C18.5901 17.2447 18.6415 17.2558 18.6875 17.2794L21.702 19C21.7361 19.0302 21.7572 19.0723 21.7609 19.1176C21.7609 19.9732 21.4221 20.7938 20.8185 21.4002C20.215 22.0065 19.3959 22.3491 18.5405 22.3529Z"
+                        fill="#EEE4E2" />
+                    <path
+                        d="M14.9966 6.36082e-07L14.9969 2L14.9972 2L14.9966 6.36082e-07ZM1.9092 22.3235L3.83178 22.8746L4.06126 22.074L3.65465 21.3471L1.9092 22.3235ZM0.615163 26.8382L2.53131 27.4113L2.53459 27.4003L2.53775 27.3893L0.615163 26.8382ZM3.15912 29.3824L2.60799 27.4598L2.59698 27.4629L2.58601 27.4662L3.15912 29.3824ZM7.67353 28.0882L8.65063 26.3432L7.9235 25.936L7.12241 26.1657L7.67353 28.0882ZM14.9966 28.2353L14.996 30.2353H14.9962L14.9966 28.2353ZM8.24703 26.3824L9.26766 24.6624L9.22867 24.6392L9.18867 24.6179L8.24703 26.3824ZM7.79117 26.2647L7.6714 28.2611L7.71633 28.2638L7.76134 28.2645L7.79117 26.2647ZM7.5559 26.2941L8.10614 28.2169L8.13492 28.2087L8.16344 28.1996L7.5559 26.2941ZM2.67385 27.6912L2.12362 25.7684L2.10438 25.7739L2.08526 25.7798L2.67385 27.6912ZM2.30623 27.3235L4.21768 27.9121L4.22357 27.8929L4.22907 27.8737L2.30623 27.3235ZM3.7032 22.4412L1.78049 21.8906L1.78036 21.891L3.7032 22.4412ZM3.61497 21.75L5.33771 20.734L5.33535 20.73L3.61497 21.75ZM22.5696 17.4706L23.5697 15.7385L23.5611 15.7336L22.5696 17.4706ZM19.5551 15.75L20.5466 14.013L20.5378 14.0081L19.5551 15.75ZM17.4817 15.7794L18.5127 17.4932L18.5134 17.4928L17.4817 15.7794ZM15.5995 16.9118L14.6599 18.6773L15.6599 19.2095L16.6305 18.6255L15.5995 16.9118ZM13.085 14.3971L11.3711 13.3661L10.7873 14.3367L11.3193 15.3365L13.085 14.3971ZM14.2172 12.5147L12.5038 11.4831L12.5034 11.4838L14.2172 12.5147ZM14.2466 10.4412L15.9887 9.45858L15.9837 9.44986L14.2466 10.4412ZM12.5262 7.42647L14.2632 6.43514L14.2583 6.42654L12.5262 7.42647ZM10.8792 6.47059L10.8882 4.47059H10.8792L10.8792 6.47059ZM5.87953 11.4559L3.87954 11.45L3.87953 11.4536L5.87953 11.4559ZM18.5258 24.1176V22.1176H18.5258L18.5258 24.1176ZM18.5405 24.1176V26.1177L18.5464 26.1176L18.5405 24.1176ZM23.5255 19.1176L25.5255 19.1176L25.5254 19.1087L23.5255 19.1176ZM18.5405 22.3529V24.353L18.5496 24.3529L18.5405 22.3529ZM18.5258 22.3529L18.5231 24.3529H18.5258V22.3529ZM7.64412 11.4559L5.64412 11.4468V11.4559L7.64412 11.4559ZM10.8792 8.23529L11.0425 6.24198L10.961 6.2353L10.8792 6.23529L10.8792 8.23529ZM10.9969 8.29412L12.7339 7.3028L12.6311 7.1227L12.4936 6.96751L10.9969 8.29412ZM12.7173 11.3088L14.4965 10.3953L14.4763 10.356L14.4544 10.3175L12.7173 11.3088ZM12.7026 11.6029L11.0234 10.5165L11.002 10.5497L10.9818 10.5837L12.7026 11.6029ZM11.3351 13.9118L13.0107 15.0036L13.0341 14.9678L13.0559 14.931L11.3351 13.9118ZM11.2762 14.7206L13.098 13.8952L13.0923 13.8827L11.2762 14.7206ZM15.276 18.7206L16.114 16.9046L16.1014 16.8989L15.276 18.7206ZM16.0848 18.6618L15.0654 16.941L15.0286 16.9628L14.9928 16.9861L16.0848 18.6618ZM18.3934 17.2941L19.4128 19.0149L19.4468 18.9947L19.4799 18.9733L18.3934 17.2941ZM18.6875 17.2794L19.6789 15.5424L19.6405 15.5205L19.6011 15.5003L18.6875 17.2794ZM21.702 19L23.0287 17.5034L22.8736 17.3658L22.6935 17.263L21.702 19ZM21.7609 19.1176L23.7609 19.1176L23.7609 19.0358L23.7542 18.9543L21.7609 19.1176ZM14.9963 -2C12.032 -1.99952 9.11944 -1.22387 6.54752 0.249958L8.53631 3.72051C10.503 2.59349 12.7302 2.00037 14.9969 2L14.9963 -2ZM6.54752 0.249958C3.97561 1.72379 1.83378 3.84456 0.334556 6.40183L3.78527 8.42484C4.93174 6.46928 6.5696 4.84753 8.53631 3.72051L6.54752 0.249958ZM0.334556 6.40183C-1.16467 8.95909 -1.96917 11.864 -1.99913 14.8282L2.00066 14.8686C2.02358 12.6018 2.6388 10.3804 3.78527 8.42484L0.334556 6.40183ZM-1.99913 14.8282C-2.02909 17.7924 -1.28348 20.7129 0.163747 23.3L3.65465 21.3471C2.54794 19.3688 1.97775 17.1354 2.00066 14.8686L-1.99913 14.8282ZM-0.0133862 21.7725L-1.30742 26.2872L2.53775 27.3893L3.83178 22.8746L-0.0133862 21.7725ZM-1.30099 26.2652C-1.51004 26.9642 -1.52608 27.7068 -1.34742 28.4142L2.53081 27.4348C2.52885 27.427 2.52903 27.4189 2.53131 27.4113L-1.30099 26.2652ZM-1.34742 28.4142C-1.16876 29.1217 -0.802048 29.7676 -0.286131 30.2835L2.54239 27.4552C2.53677 27.4496 2.53276 27.4425 2.53081 27.4348L-1.34742 28.4142ZM-0.286131 30.2835C0.229791 30.7995 0.875694 31.1662 1.58313 31.3449L2.5627 27.4667C2.55503 27.4648 2.548 27.4608 2.54239 27.4552L-0.286131 30.2835ZM1.58313 31.3449C2.29057 31.5236 3.03317 31.5076 3.73222 31.2985L2.58601 27.4662C2.57843 27.4685 2.57038 27.4687 2.5627 27.4667L1.58313 31.3449ZM3.71025 31.3049L8.22466 30.0108L7.12241 26.1657L2.60799 27.4598L3.71025 31.3049ZM6.69643 29.8333C8.96348 31.1027 11.4913 31.8354 14.0858 31.9753L14.3011 27.9811C12.3172 27.8742 10.3842 27.3138 8.65063 26.3432L6.69643 29.8333ZM14.0858 31.9753C16.6802 32.1152 19.2722 31.6585 21.6625 30.6403L20.0949 26.9602C18.2671 27.7389 16.285 28.0881 14.3011 27.9811L14.0858 31.9753ZM21.6625 30.6403C24.0529 29.622 26.1781 28.0694 27.8748 26.1016L24.8454 23.4896C23.5479 24.9943 21.9228 26.1816 20.0949 26.9602L21.6625 30.6403ZM27.8748 26.1016C29.5715 24.1338 30.7946 21.8033 31.4501 19.289L27.5795 18.2799C27.0782 20.2026 26.1429 21.9848 24.8454 23.4896L27.8748 26.1016ZM31.4501 19.289C32.1056 16.7748 32.1761 14.1437 31.6561 11.598L27.737 12.3984C28.1346 14.3452 28.0807 16.3572 27.5795 18.2799L31.4501 19.289ZM31.6561 11.598C31.1362 9.05223 30.0397 6.65954 28.4508 4.60372L25.2859 7.04982C26.5009 8.62191 27.3394 10.4516 27.737 12.3984L31.6561 11.598ZM28.4508 4.60372C26.8619 2.5479 24.8229 0.883675 22.4904 -0.261107L20.728 3.3297C22.5116 4.2051 24.0708 5.47773 25.2859 7.04982L28.4508 4.60372ZM22.4904 -0.261107C20.158 -1.40589 17.5942 -2.00076 14.996 -2L14.9972 2C16.984 1.99942 18.9445 2.4543 20.728 3.3297L22.4904 -0.261107ZM14.9972 26.2353C12.9808 26.2347 11.0018 25.6914 9.26766 24.6624L7.22639 28.1023C9.57792 29.4977 12.2617 30.2345 14.996 30.2353L14.9972 26.2353ZM9.18867 24.6179C8.76736 24.3931 8.29847 24.2721 7.821 24.2649L7.76134 28.2645C7.60217 28.2621 7.44585 28.2218 7.30539 28.1468L9.18867 24.6179ZM7.91095 24.2683C7.58541 24.2488 7.25907 24.2896 6.94835 24.3886L8.16344 28.1996C8.00461 28.2502 7.8378 28.2711 7.6714 28.2611L7.91095 24.2683ZM7.00566 24.3713L2.12362 25.7684L3.22409 29.614L8.10614 28.2169L7.00566 24.3713ZM2.08526 25.7798C2.3817 25.6885 2.69739 25.6797 2.99838 25.7545L2.03451 29.6366C2.43928 29.7371 2.86381 29.7254 3.26245 29.6026L2.08526 25.7798ZM2.99838 25.7545C3.29938 25.8292 3.57432 25.9846 3.79361 26.2039L0.965089 29.0322C1.25999 29.3271 1.62972 29.5361 2.03451 29.6366L2.99838 25.7545ZM3.79361 26.2039C4.01289 26.4232 4.16824 26.6981 4.24295 26.9991L0.360792 27.9628C0.461276 28.3676 0.670196 28.7373 0.965089 29.0322L3.79361 26.2039ZM4.24295 26.9991C4.31767 27.3 4.30893 27.6157 4.21768 27.9121L0.394783 26.735C0.272062 27.1336 0.260311 27.5581 0.360792 27.9628L4.24295 26.9991ZM4.22907 27.8737L5.62604 22.9914L1.78036 21.891L0.383393 26.7734L4.22907 27.8737ZM5.62591 22.9918C5.73364 22.6156 5.76365 22.2214 5.7141 21.8333L1.7463 22.3398C1.72708 22.1893 1.73872 22.0364 1.78049 21.8906L5.62591 22.9918ZM5.7141 21.8333C5.66455 21.4451 5.53648 21.0711 5.3377 20.734L1.89224 22.766C1.81516 22.6353 1.76551 22.4903 1.7463 22.3398L5.7141 21.8333ZM5.33535 20.73C4.07117 18.5977 3.54764 16.1071 3.84631 13.6462L-0.124555 13.1643C-0.529551 16.5013 0.180354 19.8785 1.89459 22.77L5.33535 20.73ZM3.84631 13.6462C4.14498 11.1853 5.24908 8.89233 6.98661 7.12439L4.13374 4.32061C1.7776 6.71801 0.280441 9.82735 -0.124555 13.1643L3.84631 13.6462ZM6.98661 7.12439C8.72414 5.35644 10.9975 4.21282 13.4526 3.87163L12.9021 -0.0902924C9.57273 0.37238 6.48989 1.92321 4.13374 4.32061L6.98661 7.12439ZM13.4526 3.87163C15.9078 3.53045 18.4068 4.01085 20.5605 5.23803L22.5408 1.76263C19.6203 0.0985052 16.2314 -0.552965 12.9021 -0.0902924L13.4526 3.87163ZM20.5605 5.23803C22.7142 6.46521 24.4016 8.37026 25.3599 10.6565L29.0489 9.11018C27.7495 6.01007 25.4613 3.42675 22.5408 1.76263L20.5605 5.23803ZM25.3599 10.6565C26.3181 12.9427 26.4935 15.4817 25.8585 17.8779L29.7251 18.9024C30.5861 15.6531 30.3483 12.2103 29.0489 9.11018L25.3599 10.6565ZM25.8585 17.8779C25.2236 20.2742 23.8141 22.3931 21.8495 23.9047L24.2887 27.0749C26.9528 25.0251 28.8641 22.1517 29.7251 18.9024L25.8585 17.8779ZM21.8495 23.9047C19.8849 25.4163 17.4757 26.2357 14.9969 26.2353L14.9962 30.2353C18.3576 30.2359 21.6247 29.1247 24.2887 27.0749L21.8495 23.9047ZM23.5611 15.7336L20.5465 14.013L18.5637 17.487L21.5782 19.2076L23.5611 15.7336ZM20.5378 14.0081C19.9123 13.6552 19.2043 13.4746 18.4861 13.4848L18.5428 17.4844C18.5532 17.4842 18.5634 17.4868 18.5724 17.4919L20.5378 14.0081ZM18.4861 13.4848C17.7679 13.495 17.0653 13.6956 16.45 14.0661L18.5134 17.4928C18.5223 17.4874 18.5325 17.4845 18.5428 17.4844L18.4861 13.4848ZM16.4507 14.0656L14.5685 15.198L16.6305 18.6255L18.5127 17.4932L16.4507 14.0656ZM16.5391 15.1462C15.8207 14.7639 15.2328 14.176 14.8506 13.4576L11.3193 15.3365C12.0756 16.7578 13.2387 17.921 14.6599 18.6773L16.5391 15.1462ZM14.7988 15.428L15.9311 13.5456L12.5034 11.4838L11.3711 13.3661L14.7988 15.428ZM15.9307 13.5463C16.3011 12.931 16.5017 12.2284 16.5118 11.5103L12.5122 11.4536C12.5121 11.464 12.5092 11.4742 12.5038 11.4831L15.9307 13.5463ZM16.5118 11.5103C16.522 10.7921 16.3415 10.0842 15.9886 9.45859L12.5047 11.4238C12.5098 11.4328 12.5124 11.4431 12.5122 11.4536L16.5118 11.5103ZM15.9837 9.44986L14.2632 6.43515L10.7891 8.41779L12.5096 11.4325L15.9837 9.44986ZM14.2583 6.42654C13.9164 5.83445 13.4254 5.34228 12.8341 4.99909L10.8262 8.45862C10.8129 8.45087 10.8018 8.43975 10.7941 8.4264L14.2583 6.42654ZM12.8341 4.99909C12.2428 4.6559 11.5719 4.47368 10.8882 4.47061L10.8702 8.47057C10.8548 8.4705 10.8396 8.46638 10.8262 8.45862L12.8341 4.99909ZM10.8792 4.47059C9.02631 4.47058 7.24901 5.20528 5.93692 6.5136L8.76127 9.3461C9.32357 8.78541 10.0852 8.47058 10.8792 8.47059L10.8792 4.47059ZM5.93692 6.5136C4.62483 7.82192 3.88499 9.5971 3.87954 11.45L7.87952 11.4618C7.88186 10.6676 8.19896 9.90679 8.76127 9.3461L5.93692 6.5136ZM3.87953 11.4536C3.8773 13.3785 4.25447 15.2849 4.9895 17.0639L8.68639 15.5365C8.15208 14.2433 7.8779 12.8575 7.87953 11.4582L3.87953 11.4536ZM4.9895 17.0639C5.72453 18.843 6.803 20.4596 8.16325 21.8216L10.9934 18.9949C10.0046 18.0049 9.2207 16.8297 8.68639 15.5365L4.9895 17.0639ZM8.16325 21.8216C9.52349 23.1835 11.1388 24.2639 12.9169 25.0011L14.4488 21.306C13.1564 20.7702 11.9822 19.9848 10.9934 18.9949L8.16325 21.8216ZM12.9169 25.0011C14.695 25.7382 16.601 26.1176 18.5258 26.1176L18.5258 22.1176C17.1267 22.1176 15.7413 21.8419 14.4488 21.306L12.9169 25.0011ZM18.5258 26.1176H18.5405V22.1176H18.5258V26.1176ZM18.5464 26.1176C20.3993 26.1122 22.1744 25.3723 23.4826 24.0601L20.65 21.2359C20.0893 21.7983 19.3286 22.1153 18.5346 22.1177L18.5464 26.1176ZM23.4826 24.0601C24.7909 22.7479 25.5255 20.9706 25.5255 19.1176L21.5255 19.1177C21.5255 19.9118 21.2106 20.6736 20.65 21.2359L23.4826 24.0601ZM25.5254 19.1087C25.5224 18.425 25.3402 17.7541 24.997 17.1628L21.5374 19.1705C21.5297 19.1572 21.5256 19.142 21.5255 19.1266L25.5254 19.1087ZM24.997 17.1628C24.6539 16.5715 24.1618 16.0804 23.5697 15.7386L21.5696 19.2026C21.5562 19.1949 21.5451 19.1838 21.5374 19.1705L24.997 17.1628ZM18.5405 20.3529H18.5258V24.3529H18.5405V20.3529ZM18.5285 20.3529C16.1711 20.3498 13.9114 19.411 12.2456 17.7429L9.41518 20.5693C11.8299 22.9875 15.1057 24.3483 18.5231 24.3529L18.5285 20.3529ZM12.2456 17.7429C10.5798 16.0747 9.64412 13.8135 9.64412 11.4559L5.64412 11.4559C5.64412 14.8733 7.00042 18.1511 9.41518 20.5693L12.2456 17.7429ZM9.6441 11.465C9.64559 11.1383 9.7764 10.8255 10.0079 10.5951L7.18581 7.7603C6.20473 8.73698 5.65044 10.0625 5.64415 11.4468L9.6441 11.465ZM10.0079 10.5951C10.2393 10.3646 10.5526 10.2353 10.8792 10.2353L10.8792 6.23529C9.49487 6.23528 8.16689 6.78362 7.18581 7.7603L10.0079 10.5951ZM10.7159 10.2286C10.2474 10.1902 9.81188 9.97242 9.50015 9.62072L12.4936 6.96751C12.1215 6.54774 11.6017 6.28779 11.0425 6.24198L10.7159 10.2286ZM9.25982 9.28544L10.9803 12.3001L14.4544 10.3175L12.7339 7.3028L9.25982 9.28544ZM10.9381 12.2223C10.8012 11.9556 10.737 11.6575 10.7519 11.358L14.7469 11.5577C14.7671 11.1549 14.6807 10.754 14.4965 10.3953L10.9381 12.2223ZM10.7519 11.358C10.7669 11.0585 10.8605 10.7683 11.0234 10.5165L14.3818 12.6894C14.6009 12.3508 14.7268 11.9605 14.7469 11.5577L10.7519 11.358ZM10.9818 10.5837L9.61427 12.8925L13.0559 14.931L14.4234 12.6222L10.9818 10.5837ZM9.65938 12.8199C9.39722 13.2223 9.24144 13.6846 9.20661 14.1635L13.1961 14.4537C13.1818 14.6497 13.1181 14.8389 13.0107 15.0036L9.65938 12.8199ZM9.20661 14.1635C9.17178 14.6425 9.25904 15.1224 9.46023 15.5585L13.0923 13.8827C13.1746 14.0612 13.2103 14.2576 13.1961 14.4537L9.20661 14.1635ZM9.45449 15.5459C10.4586 17.7623 12.2342 19.5381 14.4505 20.5423L16.1014 16.8989C14.7691 16.2952 13.7017 15.2277 13.098 13.8952L9.45449 15.5459ZM14.438 20.5366C14.8741 20.7378 15.3541 20.8251 15.833 20.7902L15.5429 16.8008C15.739 16.7865 15.9355 16.8222 16.114 16.9046L14.438 20.5366ZM15.833 20.7902C16.312 20.7554 16.7743 20.5996 17.1767 20.3374L14.9928 16.9861C15.1575 16.8788 15.3468 16.815 15.5429 16.8008L15.833 20.7902ZM17.1041 20.3825L19.4128 19.0149L17.3741 15.5734L15.0654 16.941L17.1041 20.3825ZM19.4799 18.9733C19.2282 19.1361 18.9379 19.2298 18.6384 19.2448L18.4386 15.2498C18.0358 15.2699 17.6455 15.3959 17.3069 15.615L19.4799 18.9733ZM18.6384 19.2448C18.3389 19.2598 18.0407 19.1955 17.7739 19.0586L19.6011 15.5003C19.2424 15.316 18.8414 15.2297 18.4386 15.2498L18.6384 19.2448ZM17.6961 19.0164L20.7106 20.737L22.6935 17.263L19.6789 15.5424L17.6961 19.0164ZM20.3753 20.4966C20.0236 20.1848 19.8059 19.7493 19.7675 19.281L23.7542 18.9543C23.7084 18.3953 23.4486 17.8755 23.0287 17.5034L20.3753 20.4966ZM19.7609 19.1177C19.7609 19.4444 19.6315 19.7577 19.4011 19.9892L22.236 22.8111C23.2126 21.83 23.7609 20.502 23.7609 19.1176L19.7609 19.1177ZM19.4011 19.9892C19.1706 20.2207 18.8579 20.3515 18.5314 20.353L18.5496 24.3529C19.9339 24.3466 21.2594 23.7922 22.236 22.8111L19.4011 19.9892Z"
+                        fill="#EEE4E2" mask="url(#path-1-inside-1_3050_1323)" />
+                </svg>
+                <svg width="35" height="30" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M28.1872 33.775V24.1156C33.4477 25.1048 35.1108 30.2109 38.4605 33.775H47C44.865 27.8964 41.6795 22.6895 37.6821 18.544C40.7487 13.3361 44.0041 8.43366 45.5964 1H37.8354C34.7923 6.68799 33.1882 13.3506 28.1872 17.7439V1H16.9231L19.6123 5.10233V19.7224C15.2482 19.0968 12.2995 9.24831 9.10308 1H1C3.94872 12.1432 10.1528 36.5972 28.1872 33.775Z"
+                        stroke="#EEE4E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+                <div class="phone-logo">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1 6.6L9 1L17 6.6V15.4C17 15.8243 16.8127 16.2313 16.4793 16.5314C16.1459 16.8314 15.6937 17 15.2222 17H2.77778C2.30628 17 1.8541 16.8314 1.5207 16.5314C1.1873 16.2313 1 15.8243 1 15.4V6.6Z"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6.33325 17V9H11.6666V17" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.4533 12.8088L12.7505 10.1022L10.6716 9.24203C11.3638 8.25623 11.7346 7.08018 11.7333 5.87506C11.7333 2.63553 9.10155 0 5.86665 0C2.63176 0 0 2.63553 0 5.87506C0 9.11458 2.63176 11.7501 5.86665 11.7501C7.08053 11.7515 8.26461 11.3737 9.25395 10.6693L10.1106 12.7456L12.8133 15.4524C12.9866 15.626 13.1924 15.7637 13.4189 15.8577C13.6454 15.9516 13.8881 16 14.1332 16C14.3784 16 14.6211 15.9517 14.8476 15.8577C15.0741 15.7638 15.2799 15.6261 15.4532 15.4525C15.6266 15.2789 15.7641 15.0729 15.8579 14.8461C15.9517 14.6193 16 14.3762 16 14.1307C16 13.8852 15.9517 13.6421 15.8579 13.4153C15.7641 13.1885 15.6266 12.9824 15.4533 12.8088ZM1.06666 5.87506C1.06666 3.2246 3.21999 1.06819 5.86665 1.06819C8.51331 1.06819 10.6666 3.2246 10.6666 5.87506C10.6666 8.52551 8.51331 10.6819 5.86665 10.6819C3.21999 10.6819 1.06666 8.52551 1.06666 5.87506ZM14.699 14.6971C14.5489 14.8471 14.3454 14.9314 14.1333 14.9314C13.9212 14.9314 13.7178 14.8471 13.5676 14.6971L11.0152 12.1411L10.2187 10.2105L12.1466 11.0081L14.6991 13.5641C14.8489 13.7145 14.933 13.9182 14.933 14.1306C14.9329 14.343 14.8488 14.5468 14.699 14.6971Z" />
+                    </svg>
+                    <svg onclick="auth('block')" width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 17C15.6667 7.72735 2.33333 7.72735 1 17" stroke-linecap="round" />
+                        <path
+                            d="M13.3898 4.24996C13.3898 6.25756 11.4929 7.99993 9.00095 7.99993C6.50898 7.99993 4.61206 6.25756 4.61206 4.24996C4.61206 2.24237 6.50898 0.5 9.00095 0.5C11.4929 0.5 13.3898 2.24237 13.3898 4.24996Z" />
+                    </svg>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 5.33337C13.1046 5.33337 14 4.43794 14 3.33337C14 2.2288 13.1046 1.33337 12 1.33337C10.8954 1.33337 10 2.2288 10 3.33337C10 4.43794 10.8954 5.33337 12 5.33337Z"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M4 10C5.10457 10 6 9.10457 6 8C6 6.89543 5.10457 6 4 6C2.89543 6 2 6.89543 2 8C2 9.10457 2.89543 10 4 10Z"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M12 14.6666C13.1046 14.6666 14 13.7712 14 12.6666C14 11.5621 13.1046 10.6666 12 10.6666C10.8954 10.6666 10 11.5621 10 12.6666C10 13.7712 10.8954 14.6666 12 14.6666Z"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M5.72656 9.00671L10.2799 11.66" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M10.2732 4.33997L5.72656 6.9933" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <script>
+        function phoneMenu(state) {
+            document.querySelector('.phone-menu_filter').style.display = state;
+            if (state === 'none') {
+                document.querySelector('.left-block__nav-head').classList.remove('active')
+            }
+
+        }
+        document.querySelector('.right-block__btn-head').addEventListener('click', () => {
+            console.log("work");
+            document.querySelector('.left-block__nav-head').classList.add('active')
+            phoneMenu('block')
+        })
+    </script>
+</body>
+
+</html>
